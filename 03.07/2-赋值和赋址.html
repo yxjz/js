@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//简单数据类型是赋值
+			var a = 1;
+			var b = a;
+			b = 2;
+			console.log(a,b)
+			
+			//对象是赋址
+			var j = {
+				a:1
+			}
+			var j2 = j;
+			j2.a = 2;
+			console.log(j,j2)
+			
+			var arr = [1,2,3];
+			var arr1 = arr;
+			arr1[0] = 4;
+			arr1[3] = 5
+			console.log(arr)
+		</script>
+	</body>
+</html>

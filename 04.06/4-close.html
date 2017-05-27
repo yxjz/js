@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value='打开新窗口'/>
+		<input type="button" value='关闭新窗口'/>
+		<input type="button" value='关闭当前窗口'/>
+		<script>
+			/*
+			 	close()
+			 		关闭窗口
+			 		
+			 	firefox下：
+			 		close只能关闭open打开的窗口
+			 * */
+			var inps = document.getElementsByTagName('input');
+			var opener = null;
+			inps[0].onclick = function(){
+				opener = open();
+			}
+			inps[1].onclick = function(){
+				opener.close();
+			}
+			inps[2].onclick = function(){
+				close();
+			}
+		</script>
+	</body>
+</html>

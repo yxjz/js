@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			/*
+			 				parentNode.firstElementChild
+                             父级下的第一个元素节点	
+
+				parentNode.lastElementChild
+				父级下的最后一个元素节点
+			 	
+			 	node.nextElementSibling
+			 	元素节点的下一个兄弟元素节点
+			 	
+			 	node.previousElementSibling
+			 	元素节点的上一个兄弟元素节点
+			 	
+			 	parentNode.children
+			 		所有子元素节点集合
+			 	node.parentNode
+			 		父节点
+			 	没有就是null,只能使用，不能设置
+			 * */
+			var list = document.getElementById('list');
+			var lis = list.getElementsByTagName('li');
+			//console.log(list.firstElementChild)
+			//console.log(list.lastElementChild)
+			//console.log(lis[0].nextElementSibling)
+			//console.log(lis[1].previousElementSibling)
+			//console.log(list.children)
+			console.log(lis[0].parentNode)
+		</script>
+	</body>
+</html>

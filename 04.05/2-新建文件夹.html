@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,p{
+				margin:0;
+			}
+			#content{
+				height:400px;
+				border: 1px solid #000;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				float: left;
+				margin-right:10px;
+				position: relative;
+				border: 2px solid #fff;
+			}
+			.box div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				margin: 10px auto 0;
+			}
+			.box input{
+				position: absolute;
+				top:0;
+				left:0;
+				display: none;
+			}
+			.box p{
+				text-align: center;
+			}
+			.box.active{
+				border-color:red;
+			}
+			.box.active input{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="新建文件夹"/>
+		<input type="button" value="删除选中"/>
+		<div id="content">
+			<!--<div class="box">
+				<div class="pic"></div>
+				<p>新建文件夹</p>
+				<input type="checkbox" />
+			</div>-->
+		</div>
+<script>
+	var btns = document.getElementsByTagName('input');
+	var content = document.getElementById('content');
+	var boxs = content.getElementsByClassName('box');
+	//新建文件夹
+	btns[0].onclick = function(){
+		var box = document.createElement('div');
+		var div = document.createElement('div');
+		var p = document.createElement('p');
+		var inp = document.createElement('input');
+		p.innerHTML = '新建文件夹';
+		inp.type = 'checkbox';
+		box.className = 'box';
+		box.check = false;
+		box.onmouseenter = function(){
+			if(!this.check){
+				this.classList.add('active');
+			}
+		}
+		box.onmouseleave = function(){
+			if(!this.check){
+				this.classList.remove('active');
+			}
+		}
+		inp.onclick = function(){
+			if(this.checked){
+				box.check = true;
+			}else{
+				box.check = false;
+			}
+		}
+		box.appendChild(div);
+		box.appendChild(p);
+		box.appendChild(inp);
+		content.appendChild(box);
+	}
+	//删除选中
+	btns[1].onclick = function(){
+		//boxs通过className动态获取，所以删除节点后，i也要--
+		/*for(var i=0;i<boxs.length;i++){
+			if(boxs[i].check){
+				console.log(boxs[i],i)
+				content.removeChild(boxs[i]);
+				i--;			
+			}
+		}*/
+		//静态获取
+		var boxs2 = content.querySelectorAll('.box');
+		for(var i=0;i<boxs2.length;i++){
+			if(boxs2[i].check){
+				//console.log(boxs[i],i)
+				content.removeChild(boxs2[i]);		
+			}
+		}	
+	}
+</script>
+	</body>
+</html>

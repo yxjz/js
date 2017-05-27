@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+		<script>
+			/*
+			 	keydown和keypress触发时间在文本改变之前
+			 	解决办法：
+			 		1.用keyup
+			 * 		2.延时定时器
+			 * */
+			var txt = document.getElementById('txt');
+			txt.onkeydown = function(){
+				var _this = this
+				setTimeout(function(){
+					console.log(_this.value)
+				},10)
+				
+			}
+//			txt.onkeypress = function(){
+//				console.log(this.value)
+//			}
+//			txt.onkeyup = function(){
+//				console.log(this.value)
+//			}
+		</script>	
+	</body>
+</html>

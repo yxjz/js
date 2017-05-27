@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:200px;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		1111111111111111111
+		<div id="div1"></div>
+		<script>
+			var div1 = document.getElementById('div1');
+			/*
+			 	鼠标按下
+			 		元素上按下，记录按下坐标到元素原点的距离
+			 	鼠标移动
+			 		document,鼠标坐标-记录的距离=元素的定位坐标
+			 	鼠标抬起
+			 		移动解绑
+			 		抬起解绑
+			 * 
+			 * */
+			div1.onmousedown = function(ev){
+				ev.preventDefault();
+				var disX = ev.clientX - this.getBoundingClientRect().left;
+				var disY = ev.clientY - this.getBoundingClientRect().top;
+				document.onmousemove = function(ev){
+					var l = ev.clientX-disX;
+					var t = ev.clientY-disY;
+					div1.style.left = l+'px';
+					div1.style.top = t+'px';
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+		</script>
+	</body>
+</html>

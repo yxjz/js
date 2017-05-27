@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				list-style: none;
+				margin:0;
+				padding:0;
+				line-height: 30px;
+				width:200px;
+				background: pink;
+				text-align: center;
+			}
+			li{
+				border-bottom:1px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+		<input type="button" value="按钮" id="btn"/>
+		<ul id="list">
+			
+		</ul>
+		<script>
+			/*
+			 	步骤：
+			 		1.获取元素
+			 		2.点击按钮
+			 		3.获取输入内容
+			 		4.生成一条li
+			 		
+			 	a += b
+			 	+=运算符，在左边自身基础上+右边的值
+			 */	
+			var n = 1;
+			n += 2;
+			console.log(n)
+			 
+			//1.获取元素
+			var txt = document.getElementById('txt');
+			var btn = document.getElementById('btn');
+			var list = document.getElementById('list');
+			//2.按钮点击
+			btn.onclick = function(){
+				//3.获取输入内容
+				var val = txt.value;
+				//4.生成li
+				list.innerHTML += '<li>'+val+'</li>';
+				//a = a + b
+				//a += b
+				console.log(list.innerHTML)
+				//5.清空输入框
+				txt.value = '';
+			}
+			
+		</script>
+	</body>
+</html>

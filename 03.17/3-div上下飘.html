@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				position: absolute;
+				top:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script src="move.js"></script>
+		<script>
+			var str = '';
+			for(var i=0;i<15;i++){
+				str += '<div style="left:'+i*55+'px;"></div>';
+			}
+			document.body.innerHTML += str;
+			var btn = document.getElementById('btn');
+			var divs = document.getElementsByTagName('div');
+			var n = 0;
+			var timer = null;
+			//判断向上还是向下
+			var onOff = true;
+			btn.on = true;
+			btn.onclick = function(){
+				if(this.on){
+					this.on = false;
+					timer = setInterval(function(){
+						fn(n);
+						n++;
+						if(n == divs.length){
+							n = 0;
+							onOff = !onOff;
+							clearInterval(timer);
+						}
+					},200);
+				}
+			}
+			function fn(m){
+				move(divs[m],{top:onOff?400:50},2000,'linear',function(){
+					if(m==divs.length-1){
+						btn.on = true;
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

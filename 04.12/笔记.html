@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            padding: 100px;
+        }
+    </style>
+</head>
+<body>
+<!--
+事件流/事件模型
+一、事件触发的三个阶段，过程：
+        捕获阶段:从最外层到目标元素。window-document-html-body。。。。
+        目标阶段:目标元素
+        冒泡阶段：从目标元素到最外层。必须是相同事件，往回找，可以跨层，但必须是包含关系。什么都不设置的情况下，只能用冒泡。
+
+二、绑定事件：
+        1、on：用On绑定事件只能在冒泡阶段执行，不能在捕获阶段执行。 事件处理器
+            相同元素的相同事件，后面会覆盖前面。
+        2、addEventListener(事件名，函数，布尔值) 事件监听器
+            元素.addEventListener（'click'，fn（））
+                参数：
+                事件名：字符串，不带on
+                函数：事件处理函数，有名匿名都可以
+                布尔值：默认是false.
+                    true:捕获阶段调用函数
+                    false：冒泡阶段调用
+                注意：
+                    1、匿名函数不相等
+                    2、同一元素的同一事件绑定相同的有名函数，后面覆盖前面，只绑一个。
+                    3、同一元素的同一事件可以绑定多个函数。按顺序执行。
+                    4、不要轻易在捕获阶段执行（true），除非需要提前。
+                    5、移动端只能用这个绑定事件，不能用on。
+三、添加解绑事件
+        元素.removeEventListener(事件名，函数，布尔值)
+        注意：
+            在哪个阶段绑定的事件，必须在同一阶段解绑。
+            有名函数是在同一元素同一事件的同一阶段
+            匿名函数在内部解绑。arguments.callee,指向本函数。
+            不能解on
+四、事件对象
+    用来记录事假触发的详细信息
+    1、事件处理函数的第一个形参就是对象   ev = ev||evevt 兼容标准浏览器和ie。ev是标准，ie不认识，认识window.event，兼容，
+    2、不同是事件的事假对象存的内容也不同。比如鼠标的事件对象有坐标信息，键盘的时间对象有键值的信息。主要看是什么事件调用。
+五、事件源
+    ev.target，点谁是谁，前面是父元素，父元素下的所有子孙都可以。判断是谁，哪个元素：ev.target.nodeName
+    触发该事件的元素:ev.target.id,ev.target.innerHtml.....
+
+
+六、事件委托
+    事件源的应用，内存性能优化
+
+
+七、阻止冒泡
+        ev.cancelBubble =true;
+        默认false,不阻止冒泡。true阻止。可动态获取
+
+        ev.stopPropagetion()
+        阻止后续进程
+
+
+ 八、阻止默认行为
+        1、找到默认行为的触发事件，阻止。
+   document.onmousedown = function(){
+        return false;
+   }
+   2、ev.preventDefault()
+   addEventListener只能用ev.preventDefault()，
+   on..通用1、2
+
+
+九、 UI事件：和浏览器相关的
+            load,scroll,resize....
+            window.onload = function(){
+
+
+            }
+            所有的文件都加载完。
+            onload ：文档、图片加载完执行事件。
+            onscroll：滚动条滚动时触发的事件。
+                获取滚动距离：
+                    1、window.pageYOffset/window.pageXOffset 不带单位，是按时间间隔触发。只能获取，不能设置。设置用scrollTo（x,y）
+                    2、document.body.scrollTop 谷歌下正常，其他浏览器下是0.。可以获取，也可以设置，纯数字
+                        document.documentElement.scrollTop  其他浏览器下正常。谷歌用这个是0.
+
+    鼠标事件:
+        onclick-单机事件
+        onblclick-双击事件，不兼容低版本，苹果系统
+        onmousedown-鼠标按下
+        onmouseup-鼠标抬起
+
+        触发顺序
+        onmousedown--onmouseup 先down后up连续触发后才触发onclick，
+        在极短时间间隔内连续触发2此click，才触发双击。
+
+        onmouseover-鼠标移入，从元素外，移入元素内，或者移入子元素，会冒泡
+        onmousout-鼠标移出，从元素外，移出元素内，或者移入子元素，会冒泡
+
+        onmouseenter -从元素外移入，子元素不触发， 不冒泡
+        onmouseleave -移出 不冒泡
+
+        onmousemove-元素上移动 按时间间隔触发，不是移动1px触发， 冒泡
+
+        onmousewheel-鼠标元素滚动事件，鼠标滚轮
+
+    oncontextmenu：h5新增事件，鼠标右键默认是调用上下文菜单
+            上下文菜单被调用事件
+
+        鼠标事件对象
+            功能键
+                true:按着；false：没按
+            altkey：按alt 和鼠标左键，==true
+            shiftkey
+            ctrlkey
+
+            鼠标事件触发时，鼠标距离可视区左边和上边的距离。
+            clientX
+            clientY
+
+            鼠标事件触发时，鼠标距离文档内容左边和上边的距离。低版本不兼容。获取可视区+滚动距离
+            pageX
+            pageY
+
+            鼠标事件触发时，鼠标距离浏览器窗口的左边和上边的距离。
+            screenX
+            screenY
+
+            鼠标事件触发时，鼠标距离该元素的左边和上边的距离。低版本不兼容，需要clientX减去元素到可视区的 距离=鼠标到可视区的距离。
+            offsetX
+            offsetY
+
+            which-键值
+                1、左键，2中间 3右键
+                chrom下的click只有左键触发
+                火狐click三件都触发。click不能做兼容。
+                mousedown兼容，都触发。
+
+    键盘文本事件
+
+    焦点事件
+    表单事件
+    。。。
+
+
+
+
+
+
+
+
+
+
+
+-->
+<div id="div1">
+    <div id="div2">
+        <div id="div3">
+
+        </div>
+    </div>
+    <script>
+        var div1 = document.getElementById('div1');
+        var div2 = document.getElementById('div2');
+        var div3 = document.getElementById('div3');
+        div3.onclick = function () {
+
+        }
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<input type="button" value="获取" id="btn2"/>
+		<script>
+			/*
+			 	hash
+			 		锚信息
+			 		#后边的
+			 		不刷新页面
+			 		#属性=值/属性=值
+			 		
+			 	window.onhashchange
+			 		hash改变时触发的事件
+			 * */
+			var btn = document.getElementById('btn');
+			var btn2 = document.getElementById('btn2');
+			var n = 1;
+			btn.onclick = function(){
+				n++;
+				location.hash = 'n'+n;	
+			}
+			btn2.onclick = function(){
+				console.log(location.hash)
+			}
+			window.onhashchange = function(){
+				console.log('改变')
+			}
+		</script>
+	</body>
+</html>

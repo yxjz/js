@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+			/*
+			 	在按键改变时，第一次按下系统会有一个时间间隔，后边就连续了
+			 * 
+			 * */
+			var div1 = document.getElementById('div1');
+			document.onkeydown = function(ev){
+				var l = parseFloat(getComputedStyle(div1).left);
+				var t = parseFloat(getComputedStyle(div1).top);
+				//console.log(ev.keyCode)
+				switch(ev.keyCode){
+					case 37:
+						div1.style.left = (l-5)+'px';
+					break;
+					case 39:	
+						div1.style.left = (l+5)+'px';
+					break;
+					case 38:
+						div1.style.top = (t-5)+'px';
+					break;
+					case 40:	
+						div1.style.top = (t+5)+'px';
+					break;
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*		 				2017年3月16日14时3分50秒
+			 	2017-3-16 14:3:50
+			    2017/3/16 14:3:50		
+			 * 
+			 * */
+			var arr = [2017,3,16,14,3,50];
+			/*
+			 	转换时间格式
+			 		参数
+			 		arr，时间的数组
+			 		n
+			 		不传或者0是2017年3月16日14时3分50秒，
+			 		1是2017-3-16 14:3:50,
+			 		2是2017/3/16 14:3:50
+			 * 
+			 * */
+			function timeStyle(data,n){
+				var str = '';
+				n = n || 0;
+				var arr2 = ['年月日时分秒','-- :: ','// :: '];
+				for(var i=0;i<data.length;i++){	
+					str += two(data[i])+arr2[n][i];
+				}
+				function two(m){
+					return m<10?'0'+m:''+m;
+				}
+				return str;
+			}
+			var s = timeStyle(arr,1);
+			console.log(s)
+		</script>
+	</body>
+</html>

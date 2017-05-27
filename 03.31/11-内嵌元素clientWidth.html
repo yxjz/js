@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				padding:100px;
+				border: 10px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<span id="sp">内容</span>
+		<script>
+			/*
+			 	内嵌元素的clientWidth/clientHeight是0
+			 * 
+			 * */
+			var sp = document.getElementById('sp');
+			//console.log(sp.clientWidth)
+			console.log(sp.offsetHeight)
+		</script>
+	</body>
+</html>

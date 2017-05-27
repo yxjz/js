@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			1.写出ECMAScript和typeof的数据类型
+				E:String Number Boolean Null Undefined Object
+				t:string number boolean object undefined function
+			2.写出转成布尔值是false的情况
+				'' 0 NaN null undefined
+			
+			3.写出Number()转化下列数据的结果
+			['20px','',true,'1.23xO',[1,2,3]]
+				NaN,0,1,NaN,NaN
+			4.写出parseInt()转化下列数据的结果
+			[false,'27i9.24px','',null]
+				NaN,27,NaN,NaN
+			5.写出下面代码的结果
+			8>2 && false || 4==='4' && 0 || '1'!= 1 && (1+2)*3 || [] && !'s' || 7 && null
+				null
+			6.封一个函数，传入数组arr，返回数组内的最大数字,写出最大的数字
+			arr = ['23xy'-16,289,'866px',-'987',null,-58332,true,17,0,+'742']
+			
+			function fn(arr){
+				var max = -Infinity;
+				for(Var i=0;i<arr.length;i++){
+					if(typeof arr[i]=='number'&&!isNaN(arr[i])&&max<arr[i]){
+						max = arr[i];
+					}
+				}
+				return max
+			}
+			742
+			7.写出下列代码执行结果,用序号注明每次弹出结果的顺序
+			// a = function
+			//b = undefined
+			alert(a)//1.function
+			var a = 10;
+			//a = 10
+			var b = function(){
+				alert(a)//2.10
+			}
+			b = function
+			alert(b())//3.undefined
+			var a = function(){
+				var a = 30;
+				alert(this.a)//4.function
+			}
+			//a = function
+			function a(b){
+				alert(b);
+				var b = 20;
+			}
+			a(5);
+			
+			8.写出下列代码执行结果,用序号注明每次弹出结果的顺序
+			//fn = function
+			//f = undefined
+			//f2 = undefined
+			function fn(a){
+				alert(a)//1.5 2.undefined 3.undefined
+				var a = 10;
+				function fn1(){
+					a++;
+					alert(a)//4.11  5.12 6.11 7.12
+				}
+				return fn1
+			}
+			fn(5);
+			var f = fn();
+			//f = fn
+			var f2 = fn();
+			f();
+			f();
+			f2();
+			f2();
+		-->
+	<script>
+		var arr = ['23xy'-16,289,'866px',-'987',null,-58332,true,17,0,+'742']
+		console.log()
+		
+	</script>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				margin-top:50px;
+				position: relative;
+				border: 1px solid #000;
+				width:250px;
+				height:250px;
+			}
+			#box div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="box"></div>
+		<script>
+			/*
+		 				(200,0)
+		 			(150,50)
+		 		(100,100)
+		 			(150,150)
+		 				(200,200)
+			 * 
+			 * */
+			var btn = document.getElementById('btn');
+			var box = document.getElementById('box');
+			var str = '';
+			var len = 5;
+			//控制方向切换
+			var n = 0;
+			tab();
+			btn.onclick = function(){
+				n++;
+				if(n>3){
+					n = 0;
+				}
+				tab();
+			}
+			function tab(){
+				str = '';
+				for(var i=0;i<len;i++){
+					if(n==0){
+						//上
+						console.log('上')
+						var l = i*50;
+						if(i<Math.ceil(len/2)){
+							var t = i*50;
+						}else{
+							var t = (len-1-i)*50;
+						}		
+					}else if(n==1){
+						console.log('右')
+						//右
+						var t = i*50;
+						if(i<Math.ceil(len/2)){
+							var l = (len-1-i)*50;
+						}else{
+							var l = i*50;
+						}
+					}else if(n==2){
+						console.log('下')
+						//右
+						var l = i*50;
+						if(i<Math.ceil(len/2)){
+							var t = (len-1-i)*50;
+						}else{
+							var t = i*50;
+						}
+					}else if(n==3){
+						console.log('左')
+						//右
+						var t = i*50;
+						if(i<Math.ceil(len/2)){
+							var l = i*50;
+						}else{
+							var l = (len-i-1)*50;
+						}
+					}
+					str += '<div style="left:'+l+'px;top:'+t+'px;">'+(i+1)+'</div>';
+				}
+				box.innerHTML = str;
+			}
+		</script>
+	</body>
+</html>

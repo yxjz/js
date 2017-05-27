@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+			var div1 = document.getElementById('div1');
+		
+			function addMouseScroll(init){
+				init.ele.onmousewheel = fn
+				init.ele.addEventListener('DOMMouseScroll',fn)
+				function fn(ev){
+					var onOff = null;
+					//true:向上，false:向下
+					if(ev.wheelDelta){
+						//谷歌，ie
+						onOff = ev.wheelDelta>0?true:false;
+					}else{
+						//火狐
+						onOff = ev.detail<0?true:false;
+					}
+					if(onOff){
+						typeof init.fnUp == 'function' && init.fnUp();
+					}else{
+						typeof init.fnDown == 'function' && init.fnDown();
+					}
+				}
+			}
+			addMouseScroll({
+				ele:document,
+				fnDown:function(){
+					console.log('down')
+				}
+			})
+		
+		</script>
+	</body>
+</html>

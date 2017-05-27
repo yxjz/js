@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				color:#fff;
+				font-size:50px;
+				line-height: 100px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="width"/>
+		<input type="button" value="height"/>
+		<input type="button" value="background"/>
+		<input type="button" value="color"/>
+		<div id="div">1</div>
+		<script>
+			var inps = document.getElementsByTagName('input');
+			var div = document.getElementById('div');
+			var arr = [['width','200px'],['height','300px'],['background','blue'],['color','#000']];
+			for(var i=0;i<inps.length;i++){
+				inps[i].index = i;
+				inps[i].onclick = function(){
+//					if(this.value == 'width'){
+//						div.style.width = '200px';
+//					}
+//					if(this.value == 'height'){
+//						div.style.height = '300px';
+//					}
+//					if(this.value == 'background'){
+//						div.style.background = 'blue';
+//					}
+//					if(this.value == 'color'){
+//						div.style.color = '#000';
+//					}
+					//都是操作样式，长得差不多，如果样式名和值可以变化，就可以简化代码了
+					
+					fn1(this.index)
+					//fn2(arr[this.index])
+					//fn3('width','200px')
+				}
+			}
+			function fn1(n){
+				div.style[arr[n][0]] = arr[n][1];
+			}
+			function fn2(arr){
+				div.style[arr[0]] = arr[1];
+			}
+			function fn3(s,v){
+				div.style[s] = v;
+			}
+		</script>
+	</body>
+</html>

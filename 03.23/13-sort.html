@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	array.sort([函数])
+			 * 	注意：
+			 * 		1.不传参，先调用toString(),再比较大小，排序
+			 * 		2.如果传入函数，根据函数return的结果排序,小于0，等于0，大于0决定是否需要交换位置
+			 * 		a-b:从小到大
+			 *      b-a：从大到小
+			 * */
+			var arr = [5,2,7,3,8,1,20];
+			arr.sort();
+			console.log(arr);//[1,2,20,3,5,7,8]
+			/*arr.sort(function(a,b){
+				//console.log(a,b)
+				//return a-b
+				return b-a
+			})
+			console.log(arr);//[20,8,7,5,3,2,1]*/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0;
+				top:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="div"></div>
+		<script>
+			/*
+			 	注意：别忘了position: absolute;
+			 * */
+			var btn = document.getElementById('btn');
+			var div = document.getElementById('div');
+			var timer = null;
+			btn.onclick = function(){
+				timer = setInterval(function(){
+					var b = parseFloat( getComputedStyle(div).left);
+					var speed = 5;
+					var v = b+speed;
+					if(v>=800){
+						clearInterval(timer)
+						v = 800;
+					}
+					console.log(v)
+					div.style.left = v+'px';
+				},20)
+			}
+		</script>
+	</body>
+</html>

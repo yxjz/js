@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="开始" id="btn"/>
+		<input type="button" value="停止" id="btn2"/>
+		<script>
+			/*
+			 	chrome、fireFox：最小时间间隔4ms
+			 * */
+			var btn = document.getElementById('btn');
+			var btn2 = document.getElementById('btn2');
+			var timer = null;
+			btn.onclick = function(){
+				//时间戳，记录执行时时间的相关信息
+				var old = new Date();
+				timer = setInterval(function(){
+					var New = new Date();
+					console.log(New-old);
+					old = New;
+				},4)
+			}
+			btn2.onclick = function(){
+				clearInterval(timer);
+			}
+		</script>
+	</body>
+</html>

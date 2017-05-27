@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	定时器是时间到时把代码放到队列里，如果队列里有代码正在执行，就会排队等正在执行的代码执行完，再执行定时器的代码
+			 * */
+			var start = new Date();
+			setTimeout(function(){
+				console.log(new Date()-start)
+			},500)
+			while(new Date()-start<=1000){
+				
+			}
+		</script>
+	</body>
+</html>

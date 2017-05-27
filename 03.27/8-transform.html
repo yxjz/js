@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				transition: 3s;
+				
+			}
+			#box{
+				width: 100px;
+				padding:100px;
+				border: 1px solid #000;
+			}
+			#box:hover #div{
+				/*transform:rotate(360deg) ;*/
+				/*transform: scale(2);*/
+				/*transform: scaleX(2);*/
+				/*transform:skew(45deg);*/
+				/*transform:skewY(45deg);*/
+				/*transform: translate(50px,50px);*/
+				/*transform: translateX(50px);*/
+				/*transform-origin: 50px center;*/
+				transform: scale(2) translateX(100px);
+				/*transform:translateX(100px) scale(2);*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="div"></div>
+		</div>
+		<script>
+			/*
+			 	transform 变换
+			 		deg角度
+			 	transform：复合写法，用空格分开,后写的先执行	
+			 	2D：	
+			 	rotate() - 旋转
+			 	
+			 	scale(x,y) - 缩放，默认是1
+			 	scaleX()
+			 	scaleY()
+			 	
+			 	skew() - 斜切
+			 	skewX()
+			 	skewY()
+			 	
+			 	translate(x,y)-位移
+			 	translateX()
+			 	translateY()
+			 	
+			 	transform-origin: center center;默认是center,可以是关键字，也可以px
+			 	tranlate不改变基点，其他都改变
+			 * */
+		</script>
+	</body>
+</html>

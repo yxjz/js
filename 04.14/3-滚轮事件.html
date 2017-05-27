@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	chrome，ie
+			 		ev.wheelDelta
+			 			120的倍数是向上
+			 			-120的倍数是向下
+			 *  firefox
+			 * 		没有mousewheel事件
+			 * 		只能通过addEventListener绑定DOMMouseScroll事件
+			 * 		ev.detail
+			 * 			-3的倍数是向上
+			 * 			3的倍数是向下
+			 * */
+			document.onmousewheel = function(ev){
+				console.log(ev.wheelDelta)
+			}
+			document.addEventListener('DOMMouseScroll',function(ev){
+				console.log(ev.detail)
+			})
+		</script>
+	</body>
+</html>

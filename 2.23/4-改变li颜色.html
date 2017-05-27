@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮"/>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			/*
+			 	需求：
+			 		点击按钮，每点一下li依次变色
+			 * */
+			var btn = document.getElementsByTagName('input')[0];
+			var lis = document.getElementsByTagName('li');
+			//控制li选取
+			var n = 0;
+			var color = ['red','yellow','blue'];
+			//控制数组颜色
+			var m = 0;
+			 btn.onclick = function(){
+			 	if(n<lis.length){
+//			 		1.
+//			 		if(n == 0){
+//			 			lis[n].style.background = 'red';
+//						n++;
+//			 		}else if(n == 1){
+//			 			lis[n].style.background = 'blue';
+//						n++;
+//			 		}
+			 		
+			 		
+			 		//2.
+//			 		lis[n].style.background = color[m];
+//			 		n++;
+//			 		m++;
+//			 		if(m>color.length-1){
+//			 			m = 0;
+//			 		}
+
+					//3
+					lis[n].style.background = color[n%color.length];
+					n++;
+			 	}
+			}
+		</script>
+	</body>
+</html>

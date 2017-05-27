@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<input type="button" value="获取" id="btn2"/>
+		<script>
+			/*
+			 	search
+			 		查询信息
+			 		?这段信息#
+			 		问号后井号前的信息
+			 		
+			 		会刷新页面，不要放在全局
+			 		?属性=值&属性=值
+			 		
+			 * */
+			var btn = document.getElementById('btn');
+			var btn2 = document.getElementById('btn2');
+			btn.onclick = function(){
+				location.hash = 'nnn'
+				location.search = 'abc';
+			}
+			btn2.onclick = function(){
+				console.log(location.search);
+			}
+		</script>
+	</body>
+</html>

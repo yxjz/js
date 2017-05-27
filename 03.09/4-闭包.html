@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	闭包
+			 		函数套函数声明,函数内部形成闭包环境
+			 * */
+			function fn(){
+				var a = 1;
+				function fn1(){
+					a++;
+					console.log(a)
+				}
+				return fn1;
+			}
+			var f = fn();
+			f();
+			f();
+			fn()();
+
+			
+		</script>
+	</body>
+</html>

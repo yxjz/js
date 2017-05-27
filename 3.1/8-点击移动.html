@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top:50px;
+				left:10px;
+			}
+		</style>
+	</head>
+	<body>
+		left:
+		<input type="text" />
+		<input type="button" value="按钮"/>
+		<div id="div"></div>
+		<script>
+			/*
+			 	getComputedStyle(元素)
+			 		获取到的是一个对象，计算，渲染后的样式集合
+			 *  getComputedStyle(元素).样式名
+			 * */
+			var div = document.getElementById('div');
+			var inps = document.getElementsByTagName('input');
+			inps[1].onclick = function(){
+				var val = Number(inps[0].value);
+				var l = parseInt(getComputedStyle(div).left);
+				div.style.left = val+l+'px';
+				console.log(val,l)
+			}
+		</script>
+	</body>
+</html>

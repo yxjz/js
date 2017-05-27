@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	要获取本月有多少天，把月设置成下一月，日设置成0,就会跳转到本月的最后一天，看下是几号就知道了
+			 * */
+			var date = new Date();
+			//date.setDate(1);
+			date.setMonth(2);
+			date.setDate(0);
+			console.log(date.getDate())
+		</script>
+	</body>
+</html>

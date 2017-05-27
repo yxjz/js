@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		ul{
+			margin:0;
+			padding:0;
+			list-style: none;
+			width: 660px;
+			margin:50px auto;
+		}
+		li{
+			width: 150px;
+			height: 150px;
+			border:2px solid #fff;
+			float: left;
+			background-size: 100%;
+			margin-right:10px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script src="Mtween2.js"></script>
+	<script>
+		var lis = document.getElementsByTagName('li');
+		//布局转换
+		for(var i=0;i<lis.length;i++){
+			lis[i].style.backgroundImage = 'url(img/'+(i+1)+'.jpg)';
+			lis[i].style.left = lis[i].offsetLeft+'px';
+			lis[i].style.top = lis[i].offsetTop+'px';
+			//用自定义属性记录下当前位置，运动时候的坐标
+			lis[i].l = lis[i].offsetLeft;
+			lis[i].t = lis[i].offsetTop;
+		}
+		for(var i=0;i<lis.length;i++){
+			lis[i].style.position = 'absolute';
+			lis[i].style.margin = 0;
+			drag(lis[i]);
+		}
+		function drag(obj){
+			obj.onmousedown = function(ev){
+				ev.preventDefault();
+				this.style.zIndex = 10;
+				var disX = ev.clientX - this.getBoundingClientRect().left;
+				var disY = ev.clientY - this.getBoundingClientRect().top;
+				//存碰到的Li
+				var arr = [];
+				document.onmousemove = function(ev){
+					var l = ev.clientX-disX;
+					var t = ev.clientY-disY;
+					obj.style.left = l+'px';
+					obj.style.top = t+'px';
+					arr.forEach(function(a){
+						a.style.borderColor = '';
+					})
+					arr = [];
+					for(var i=0;i<lis.length;i++){
+						//跳过自己跟自己比
+						if(obj===lis[i]){
+							continue;
+						}
+						//碰到就放数组里
+						if(duang(obj,lis[i])){
+							arr.push(lis[i]);
+						}
+					}
+					//console.log(arr)
+					arr.forEach(function(a){
+						a.style.borderColor = 'red';
+					})	
+				}
+				document.onmouseup = function(){
+					obj.style.zIndex = '';
+					if(arr.length){
+						var ele = null;
+						var min = Infinity;
+						//有碰上的
+						arr.forEach(function(a){
+							var x = Math.abs(obj.offsetLeft-a.offsetLeft);
+							var y = Math.abs(obj.offsetTop-a.offsetTop);
+							var d = Math.sqrt(x*x+y*y);
+							a.style.borderColor = '';
+							if(d<min){
+								min = d;
+								ele = a;
+							}
+						})
+						Mtween({
+							el:obj,
+							target:{
+								top:ele.t,
+ 								left:ele.l
+							},
+							time:500
+						});
+						Mtween({
+							el:ele,
+							target:{
+								top:obj.t,
+ 								left:obj.l
+							},
+							time:500,
+							callBack:function(){
+								//运动完回调函数里重新记录下当前位置，为了下次运动
+								ele.t = ele.offsetTop;
+								ele.l = ele.offsetLeft;
+								obj.t = obj.offsetTop;
+								obj.l = obj.offsetLeft;
+							}
+						});
+						
+					}else{
+						//没碰上
+						Mtween({
+							el:obj,
+							target:{
+								top:obj.t,
+ 								left:obj.l
+							},
+							time:500
+						});
+					}
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+		}
+		function duang(obj1,obj2){
+			var pos1 = obj1.getBoundingClientRect();
+			var pos2 = obj2.getBoundingClientRect();
+			//没碰上的情况
+			if(pos1.right<pos2.left||pos1.bottom<pos2.top||pos1.left>pos2.right||pos1.top>pos2.bottom){
+				//有一个符合就是没碰上
+				return false;
+			}else{
+				return true;
+			}	
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	数组 Array
+			 		存0个或者多个数据，有序性，多个数据间用逗号分隔
+			 	字面量
+			 	 	var arr = [];
+			 	创建对象
+			 		var arr = new Array();
+			 	注意:
+			 		括号里的参数只有一位，并且是数字，是设置数组的长度，不是传值
+			 		
+			 	length,数据的个数，可以获取也可以设置，但是不推荐设置！！！	
+			 	 
+			 	 Array.of()
+			 	 	创建数组，解决了只传一位，并且是数字，就把这个数字当做一项传入数组，而不是设置数组长度
+			 * */
+				/*var arr = new Array(10);
+				console.log(arr.length)*/
+				var arr1 = [1,2,3,4,5];
+				arr1.length = 3;
+				console.log(arr1);
+				var arr2 = Array.of(10);
+				console.log(arr2);
+		</script>
+	</body>
+</html>

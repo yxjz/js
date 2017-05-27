@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			/*
+			 	array.forEach(function(a,b,c){
+			 		
+			 	})
+			 	a:值
+			 	b:index
+			 	c:arr
+			 * */
+			/*var arr = [1,2,3,4];
+			arr.forEach(function(a,b,c){
+				console.log(a,b,c)
+			})*/
+			var lis = document.getElementsByTagName('li');
+			var arr = [];
+			for(var i=0;i<lis.length;i++){
+				arr.push(lis[i])
+			}
+			console.log(arr)
+			arr.forEach(function(a,b,c){
+				a.onclick = function(){
+					for(var i=0;i<c.length;i++){
+						c[i].style.background = '';
+					}
+					a.style.background = 'red';
+				}
+			})
+		</script>
+	</body>
+</html>

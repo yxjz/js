@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: red;
+				font-size:30px;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			(function(){
+				var w = screen.width;
+				var targetW = 320;
+				var scale = w/targetW;
+				var meta = document.createElement('meta');
+				meta.name = 'viewport';
+				meta.content = 'user-scalable=no,width=device-width,initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale;
+				document.head.appendChild(meta);
+				document.addEventListener('touchstart',function(ev){
+					ev.preventDefault();
+				})
+			/*
+			 	事件对象
+			 		length,[0]
+			 		changedTouches
+			 			触发该事件触点对象的集合
+			 		targetTouches
+			 			在该元素上的触点对象的集合
+			 		touches
+			 			屏幕上所有触点对象的集合
+			 			
+			 			
+			 		clientX
+			 			触点坐标到可视区的距离
+			 * 		pageX
+			 * 			触点坐标到内容区域的距离
+			 * 		screenX
+			 * 			触点坐标到窗口的距离
+			 * */	
+			 var box = document.getElementById('box');
+				box.addEventListener('touchmove',function(ev){
+//					box.innerHTML = 'changed:'+ev.changedTouches.length+'</br>target:'+ev.targetTouches.length+'</br>touch:'+ev.touches.length
+					box.innerHTML = ev.touches[0].force
+				console.log(ev.touches[0])
+			})
+				
+				
+			})()
+			
+		</script>
+	</body>
+</html>

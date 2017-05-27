@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 50px;
+				height: 50px;
+				border:1px solid #000;
+				line-height: 50px;
+				text-align: center;
+				position: absolute;
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			/*
+			 	(0,0) (0,60) (0,120)...(0,540)
+			 	(60,0) (60,60) (60,120)...(60,540)
+			 	
+			 * 第一行(i:0-9)
+			 * 	top：0*60
+			 *  left:i%10*60
+			 * 
+			 * 第二行(i:10-19)
+			 * top：1*60
+			 * left:i%10*60
+			 * 
+			 * Math.floor(数字)向下取整
+			 * */
+			var str = '';
+			for(var i=0;i<100;i++){
+				str += '<div style="left:'+i%10*60+'px;top:'+Math.floor(i/10)*60+'px;">'+(i+1)+'</div>';
+			}
+			document.body.innerHTML = str;
+			var divs = document.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				divs[i].onclick = function(){
+					//循环给100个div添加点击事件，for循环结束时，i=100,所以这里点击的时候，i是100
+					alert(i);//100
+				}
+			}
+		</script>
+	</body>
+</html>

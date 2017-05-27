@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script src="Mtween.js"></script>
+		<script>
+			/*
+			 	call改变函数内this指向
+			 	Function.call(obj)
+			 	obj:this指向元素
+			 * */
+			var div = document.getElementById('div');
+			//console.log(css(div,'opacity'))
+			//css(div,'opacity',50);
+			Mtween({
+				el:div,
+				target:{
+					left:400
+				},
+				time:3000,
+				callIn:function(){
+					console.log(this)
+				}
+			})
+		</script>
+	</body>
+</html>

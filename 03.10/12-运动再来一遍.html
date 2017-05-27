@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0;
+				top:50px;
+			}
+			#div2{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				position: absolute;
+				left:0;
+				top:180px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="div"></div>
+		<div id="div2"></div>
+		<script>
+			
+			var btn = document.getElementById('btn');
+			var div = document.getElementById('div');
+			var div2 = document.getElementById('div2');
+			btn.onclick = function(){
+				move(div,'left',5,800);
+				move(div2,'left',5,500,function(){
+					move(div2,'top',5,400)
+				})
+			}
+			/*
+			 	运动需要直到当前位置，目标位置，每次移动的距离
+			 * 
+			 * */
+			/*
+			 	obj:要运动的元素，obj
+			 	attr:要运动的属性，str
+			 	speed:每次运动的距离,num
+			 	target:目的点，num
+			 	callback:回调函数，运动完执行的代码，function
+			 * 
+			 * */
+			function move(obj,attr,speed,target,callback){
+				var timer = null;
+				timer = setInterval(function(){
+					//begin
+					var b = parseFloat(getComputedStyle(obj)[attr]);
+					var v = b+speed;
+					if(v>=target){
+						v = target;
+						clearInterval(timer);
+						if(typeof callback == 'function'){
+							callback && callback();
+						}
+					}
+					obj.style[attr] = v + 'px';
+				},20)
+			}
+		</script>
+	</body>
+</html>

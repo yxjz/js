@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="txt"/>
+			<input type="password" name="pass"/>
+			<input type="button" name="bt" value="按钮"/>
+			<select name="num">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
+		</form>
+		<script>
+			/*
+			 	form下可以通过name名操作元素
+			 */
+			var form = document.getElementsByTagName('form')[0];
+			form.txt.value="123"
+		console.log(form.txt.value)	
+		form.bt.onclick = function(){
+			form.num.value = '3';
+		}
+		</script>
+	</body>
+</html>

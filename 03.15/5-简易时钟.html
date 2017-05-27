@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="images/0.jpg" alt="" />
+		<img src="images/0.jpg" alt="" />
+		<img src="images/c.jpg" alt="" />
+		<img src="images/0.jpg" alt="" />
+		<img src="images/0.jpg" alt="" />
+		<img src="images/c.jpg" alt="" />
+		<img src="images/0.jpg" alt="" />
+		<img src="images/0.jpg" alt="" />
+		<script>
+			/*
+			 	str[0]
+			 	str.charAt(0)
+			 	字符串第几位是什么字符
+			 * 
+			 * */
+			
+			var imgs = document.getElementsByTagName('img');
+			setInterval(function(){
+				var str = '';
+				var date = new Date();
+				var h = date.getHours();
+				var m = date.getMinutes();
+				var s = date.getSeconds();
+				str = two(h)+':'+two(m)+':'+two(s);
+				//console.log(str);
+				for(var i=0;i<imgs.length;i++){
+					if(i==2||i==5){
+						continue;
+					}
+					//str = 10:39:10
+					imgs[i].src = 'images/'+str[i]+'.jpg';
+				}
+			},1000)
+			function two(n){
+				return n<10?'0'+n:''+n;
+			}
+		</script>
+	</body>
+</html>

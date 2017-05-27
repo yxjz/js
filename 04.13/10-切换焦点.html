@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<script>
+			var inps = document.getElementsByTagName('input');
+			for(var i=0;i<inps.length;i++){
+				inps[i].onkeyup = function(ev){
+				if(this.value.length == this.maxLength){
+					if(this.nextElementSibling){
+					this.nextElementSibling.focus();	
+					}
+				}
+				}
+			}
+		</script>
+	</body>
+</html>

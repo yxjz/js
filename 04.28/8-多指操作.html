@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin:100px auto;
+				color: #fff;
+				font-size:30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			(function(){
+				var w = screen.width;
+				var targetW = 320;
+				var scale = w/targetW;
+				var meta = document.createElement('meta');
+				meta.name = 'viewport';
+				meta.content = 'user-scalable=no,width=device-width,initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale;
+				document.head.appendChild(meta);
+				document.addEventListener('touchstart',function(ev){
+					ev.preventDefault();
+				})
+				
+				var box = document.getElementById('box');
+				//gesture事件只有IOS下有
+				/*
+				 	gesturestart
+				 		屏幕上有2根及以上手指，元素上至少有1根手指
+				 * 
+				 * */
+				
+				box.addEventListener('gesturestart',function(){
+					this.style.background = 'blue';
+				})
+				
+				/*
+				 	gestureend
+				 	当gesturestart触发时，屏幕上手指数少于2根，或者元素上没有手指	
+				 * 
+				 * */
+				box.addEventListener('gestureend',function(){
+					this.style.background = 'red';
+				})
+				/*
+				 * gesturechange
+					 当gesturestart触发时,手指位置发生改变时
+				 *  ev.scale
+				 * 		距离比，gesturestart触发时2根手指之间的距离和改变位置后，2根手指之间距离的比值
+				 * 
+				 * 	ev.rotation
+				 * 		旋转差
+				 * gesturestart触发时2根手指之间的直线和改变位置后，2根手指之间直线中间形成的夹角
+				 * 
+				 * */
+				box.addEventListener('gesturechange',function(ev){
+//					this.style.background = 'yellow';
+//					this.innerHTML = ev.scale;
+					this.innerHTML = ev.rotation;
+				})
+				
+				
+				
+				
+				
+			})()
+			
+		</script>	
+	</body>
+</html>

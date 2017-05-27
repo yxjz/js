@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#list{
+				width: 330px;
+				height: 330px;
+				margin:100px auto 0;
+				padding:0;	
+				list-style: none;
+			}
+			li{
+				width: 100px;
+				height: 100px;
+				background: gray;
+				float: left;
+				margin-right:10px;
+				margin-bottom: 10px;
+			}
+			#box{
+				position: absolute;
+				background: lightblue;
+				opacity: .3;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div id="box"></div>
+		<script>
+			var div1 = document.getElementById('box');
+			var lis = document.getElementsByTagName('li');
+			//存选中的li
+			var checked = [];
+			var oL,oT;
+			var onOff = false;
+			//画方块
+			document.onmousedown = function(ev){
+				ev.preventDefault();
+				oL = ev.clientX;
+				oT = ev.clientY;
+				div1.style.display = 'block';
+				onOff = true;
+				document.onmousemove = function(ev){
+					if(onOff){
+						var iL = ev.clientX;
+						var iT = ev.clientY;
+						var w = Math.abs(iL-oL);
+						var h = Math.abs(iT-oT);
+						var l = iL>oL?oL:iL;
+						var t = iT>oT?oT:iT;
+						div1.style.width = w + 'px';
+						div1.style.height = h + 'px';
+						div1.style.left = l + 'px';
+						div1.style.top = t + 'px';
+						//框选移动时，先清空存选中的数组
+						checked = [];
+						for(var i=0;i<lis.length;i++){
+							//把碰到的放入数组，改变颜色
+							if(duang(lis[i],div1)){
+							lis[i].style.background = 'pink';		
+							checked.push(lis[i]);
+							}else{
+								lis[i].style.background = '';		
+							}
+						}
+					}
+				}
+				document.onmouseup = function(){
+					div1.style.cssText = '';
+					onOff = false;
+				}
+			}
+			//碰撞检测函数
+			function duang(obj1,obj2){
+				var pos1 = obj1.getBoundingClientRect();
+				var pos2 = obj2.getBoundingClientRect();
+				//没碰上的情况
+				if(pos1.right<pos2.left||pos1.bottom<pos2.top||pos1.left>pos2.right||pos1.top>pos2.bottom){
+					//有一个符合就是没碰上
+					return false;
+				}else{
+					return true;
+				}	
+			}
+			//布局转换，浮动和定位同时存在，浮动失效，后边的浮动元素向前补位，所以获取left,top就有问题了，所以获取和加定位分开
+			for(var i=0;i<lis.length;i++){
+				lis[i].style.left = lis[i].offsetLeft + 'px';
+				lis[i].style.top = lis[i].offsetTop + 'px';
+				
+			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].style.position = 'absolute';
+				lis[i].style.margin = 0;
+			}
+			
+			//选中的li上按下，拖拽移动所有选中的li
+			for(var i=0;i<lis.length;i++){
+				lis[i].onmousedown = function(ev){
+					if(checked.includes(this)){
+						//阻止冒泡（移动不框选）
+						ev.stopPropagation();
+						var oldX = ev.clientX;
+						var oldY = ev.clientY;
+						checked.forEach(function(a){
+							a.l = parseFloat(getComputedStyle(a).left);
+							a.t = parseFloat(getComputedStyle(a).top);
+						})
+						document.onmousemove = function(ev){
+							var nowX = ev.clientX;
+							var nowY = ev.clientY;
+
+							checked.forEach(function(a){
+								console.log(a)
+								a.style.left = a.l+(nowX-oldX)+'px';
+								a.style.top = a.t+(nowY-oldY)+'px';
+							})
+						}
+						document.onmouseup = function(){
+							checked.forEach(function(a){
+								a.style.background = '';
+								a.l = null;
+								a.t = null;
+							})
+							document.onmousemove = document.onmouseup = null;
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

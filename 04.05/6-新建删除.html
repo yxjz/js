@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,p{
+				margin:0;
+			}
+			#content{
+				height:400px;
+				border: 1px solid #000;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				float: left;
+				margin-right:10px;
+				position: relative;
+				border: 2px solid #fff;
+			}
+			.box div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				margin: 10px auto 0;
+			}
+			.box input{
+				position: absolute;
+				top:0;
+				left:0;
+				display: none;
+			}
+			.box p{
+				text-align: center;
+			}
+			.box.active{
+				border-color:red;
+			}
+			.box.active input{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="新建文件夹"/>
+		<input type="button" value="删除选中"/>
+		<div id="content">
+			<!--<div class="box">
+				<div class="pic"></div>
+				<p>新建文件夹</p>
+				<input type="checkbox" />
+			</div>-->
+		</div>
+<script>
+	var data = [
+		{
+			id:1,
+			name:'周杰伦',
+			child:[]
+		},
+		{
+			id:2,
+			name:'五月天',
+			child:[]
+		},
+		{
+			id:3,
+			name:'梁静茹',
+			child:[]
+		},
+		{
+			id:4,
+			name:'林俊杰',
+			child:[]
+		}
+	];
+	var btns = document.getElementsByTagName('input');
+	var content = document.getElementById('content');
+	var boxs = content.getElementsByClassName('box');
+	var max = maxId(data);
+	data.forEach(function(a){
+		createBox(a);
+	})
+	//新建文件夹
+	btns[0].onclick = function(){
+		var d = {
+			id:++maxId,
+			name:'新建文件夹',
+			child:[]
+		};
+		createBox(d,'create');
+		var name = prompt('请输入文件夹名称','新建文件夹');
+		if(name){
+			if(
+				data.every(function(a){
+					return a.name != name;
+				})
+			){
+				d.name = name;
+				boxs[0].getElementsByTagName('p')[0].innerHTML = name;
+				data.push(d);
+			}else{
+				alert('名字重复了');
+				content.removeChild(boxs[0]);
+			}
+		}else{
+			content.removeChild(boxs[0]);
+		}
+	}
+	//删除选中
+	btns[1].onclick = function(){
+		for(var i=0;i<boxs.length;i++){
+			if(boxs[i].check){
+				content.removeChild(boxs[i]);
+				i--;			
+			}
+		}
+	}
+	//找到id最大值
+	function maxId(data){
+		var max = -Infinity;
+		fn(data);
+		function fn(data){
+			data.forEach(function(a){
+				if(max<a.id){
+					max = a.id;
+				}
+				if(a.child.length!=0){
+					fn(a.child);
+				}
+			})
+		}
+		return max;
+	}
+	//根据传入数据渲染文件夹，type设置create为新建，不写是渲染
+	function createBox(data,type){
+		var box = document.createElement('div');
+		var div = document.createElement('div');
+		var p = document.createElement('p');
+		var inp = document.createElement('input');
+		p.innerHTML = data.name;
+		inp.type = 'checkbox';
+		box.className = 'box';
+		box.Id = data.id;
+		box.check = false;
+		box.onmouseenter = function(){
+			if(!this.check){
+				this.classList.add('active');
+			}
+		}
+		box.onmouseleave = function(){
+			if(!this.check){
+				this.classList.remove('active');
+			}
+		}
+		inp.onclick = function(){
+			if(this.checked){
+				box.check = true;
+			}else{
+				box.check = false;
+			}
+		}
+		box.appendChild(div);
+		box.appendChild(p);
+		box.appendChild(inp);
+		if(type == 'create'){
+			content.insertBefore(box,content.firstElementChild);
+		}else{
+			content.appendChild(box);	
+		}
+	}
+	function removeData(){
+		
+	}
+</script>
+	</body>
+</html>

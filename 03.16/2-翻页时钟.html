@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+ul{
+	position:relative;
+	margin-top:100px;
+	overflow: hidden;
+	height:70px;
+}
+li{
+	position: relative;
+	top: 0;
+	left: 0;
+	float: left;
+}
+img{
+	display: block;
+	border:none;
+	vertical-align: top;
+}
+
+</style>
+<body>
+	<ul id="oUl">
+		<li>
+			<img src="images/0.jpg"/>
+			<img src="images/0.jpg"/>
+		</li>
+		<li>
+			<img src="images/0.jpg"/>
+			<img src="images/0.jpg"/>
+		</li>
+		
+		<li>
+			<img src="images/c.jpg"/>
+		</li>
+		
+		<li>
+			<img src="images/0.jpg"/>
+			<img src="images/0.jpg"/>
+		</li>
+		<li>
+			<img src="images/0.jpg"/>
+			<img src="images/0.jpg"/>
+		</li>
+		<li>
+			<img src="images/c.jpg"/>
+		</li>
+		<li>
+			<img src="images/0.jpg"/>
+			<img src="images/0.jpg"/>
+		</li>
+		<li>
+			<img src="images/0.jpg"/>
+			<img src="images/0.jpg"/>
+		</li>
+	</ul>
+</body>
+<script src="move.js"></script>
+<script type="text/javascript">
+	/*
+		上一秒：10:25:50
+		当前：10:25:51
+		逐位对比，看哪一位变了，这一位执行翻页效果
+		第7位不同，
+		翻页效果
+			li img1 img2
+			运动前
+				img2  1
+			运动
+				li top:-70
+			运动后
+				img1  1
+				li top:0
+			
+	* */
+	var lis = document.getElementsByTagName('li');
+	var d1 = lis[2].getElementsByTagName('img')[0];
+	var d2 = lis[5].getElementsByTagName('img')[0];
+		//初始化
+		var old = getTime();
+		//console.log(old)
+		for(var i=0;i<lis.length;i++){
+			var img = lis[i].getElementsByTagName('img')[0];
+			if(i==2||i==5){
+				continue;
+			}
+			img.src = 'images/'+old[i]+'.jpg';
+		}		
+		//获取时间，返回字符串
+		function getTime(){
+			var date = new Date();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			var str = '';
+			str = two(h)+':'+two(m)+':'+two(s);
+			function two(n){
+				return n<10?'0'+n:''+n;
+			}
+			return str;
+		}
+		setInterval(function(){
+			var New = getTime();
+			//console.log(New)
+			for(var i=0;i<New.length;i++){
+				if(old[i]!=New[i]){
+					//哪位不同，i
+					//Img2变成的数字，New[i]
+					tab(i,New[i]);
+				}
+			}
+			old = New;
+		},1000);
+		//n第几位li要翻页,num是img2要变的数字
+		function tab(n,num){
+			var imgs = lis[n].getElementsByTagName('img');
+			imgs[1].src = 'images/'+num+'.jpg';
+			move(lis[n],{top:-70},800,'linear',function(){
+				imgs[0].src = 'images/'+num+'.jpg';
+				lis[n].style.cssText = '';
+			});
+		}
+	
+</script>
+</html>

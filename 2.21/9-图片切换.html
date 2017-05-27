@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 480px;
+				border:1px solid #000;
+				margin: 50px auto;
+				position: relative;
+			}
+			#box a{
+				position: absolute;
+				top:200px;
+			}
+			#prev{
+				left:-100px;
+			}
+			#next{
+				right:-100px;
+			}
+			img{
+				vertical-align: top;
+				border: 0;
+				width: 400px;
+				height: 480px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="" alt="" id="img"/>
+			<a href="javascript:;" id="prev">上一张</a>
+			<a href="javascript:;" id="next">下一张</a>
+		</div>
+		<script>
+			/*
+			 	n++
+			 * 左侧自增1
+			 * n--
+			 * 左侧自减1
+			 * */
+			var img = document.getElementById('img');
+			var prev = document.getElementById('prev');
+			var next = document.getElementById('next');
+			var n = 1;
+			//初始化
+			img.src = 'img/'+n+'.png';
+			//上一张
+			prev.onclick = function(){
+				//alert(1)
+				n--;
+				//顺序
+//				if(n<1){
+//					n = 1;
+//				}
+				//循环
+				if(n<1){
+					n = 4;
+				}
+				img.src = 'img/'+n+'.png';
+			}
+			//下一张
+			next.onclick = function(){
+				//alert(2)
+				n++;
+				//顺序
+//				if(n>4){
+//					n = 4;
+//				}
+				//循环
+				if(n>4){
+					n = 1;
+				}
+				img.src = 'img/'+n+'.png';	
+			}
+		</script>
+	</body>
+</html>

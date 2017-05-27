@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin:0;
+			}
+			ol{
+				margin:0;
+				padding:0;
+				list-style: none;
+				position: fixed;
+				right:0;
+				bottom:0;
+				width: 50px;
+				height:200px;
+				background: #000;
+			}
+			li{
+				width: 40px;
+				height: 40px;
+				border-radius:50% ;
+				border: 5px solid #000;
+			}
+			li:nth-of-type(1){
+				background: red;
+			}
+			li:nth-of-type(2){
+				background: yellow;
+			}
+			li:nth-of-type(3){
+				background: blue;
+			}
+			li:nth-of-type(4){
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<ol>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+		<script>
+			/*
+			 	window.scrollTo(x,y)
+			 		设置滚动条
+			 * */
+			var divs = document.getElementsByTagName('div');
+			var lis = document.getElementsByTagName('li');
+			var arr = ['red','yellow','blue','green'];
+			var h = document.documentElement.clientHeight;
+			for(var i=0;i<divs.length;i++){
+				divs[i].style.height = h + 'px';
+				divs[i].style.background = arr[i];
+				lis[i].index = i;
+				lis[i].onclick = function(){
+					scrollTo(0,this.index*h);
+				}
+				 
+			}
+		</script>
+	</body>
+</html>

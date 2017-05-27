@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<ul>
+			<li>
+				<p>用户名：小红</p>
+				<span>年龄：18</span>
+				<dl>
+					<dt>爱好</dt>
+					<dd>男人</dd>
+					<dd>看书</dd>
+					<dd>逛街</dd>
+				</dl>
+			</li>
+		</ul>-->
+		<script>
+			var info = [
+				{
+					name:'小红',
+					age:18,
+					like:['男人','看书','逛街']
+				},
+				{
+					name:'小梅',
+					age:16,
+					like:['美食','旅游','健身']
+				},
+				{
+					name:'小明',
+					age:14,
+					like:['游戏','踢球','电影']
+				}
+			];
+			/*
+			 	<ul>
+			 		<li>
+			 			<p>用户名：小红</p>
+			 			<span>年龄：18</span>
+			 			<dl>
+			 				<dt>爱好</dt>
+			 				<dd>男人</dd>
+			 				<dd>男人</dd>
+			 				<dd>男人</dd>
+			 			</dl>
+			 		</li>
+			 		<li>
+			 			<p>用户名：小红</p>
+			 			<span>年龄：18</span>
+			 			<dl>
+			 				<dt>爱好</dt>
+			 				<dd>男人</dd>
+			 				<dd>男人</dd>
+			 				<dd>男人</dd>
+			 			</dl>
+			 		</li>
+			 		<li>
+			 			<p>用户名：小红</p>
+			 			<span>年龄：18</span>
+			 			<dl>
+			 				<dt>爱好</dt>
+			 				<dd>男人</dd>
+			 				<dd>男人</dd>
+			 				<dd>男人</dd>
+			 			</dl>
+			 		</li>
+			 * </ul>
+			 * 
+			 * */
+			var str = '';
+			str = '<ul>';
+			for(var i=0;i<info.length;i++){
+				str += '<li>'+
+					'<p>用户名：'+info[i].name+'</p>'+
+					'<span>年龄：'+info[i].age+'</span>'+
+					'<dl>'+
+						'<dt>爱好</dt>';
+					for(var j=0;j<info[i].like.length;j++){
+						str += '<dd>'+info[i].like[j]+'</dd>';
+					}
+
+					str += '</dl>'+
+				'</li>';
+			}
+			str += '</ul>';
+			document.body.innerHTML = str;
+		</script>
+	</body>
+</html>

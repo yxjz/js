@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 400px;
+				border: 1px solid #000;
+			}
+			#ball{
+				width: 50px;
+				height: 50px;
+				background: blue;
+				position: absolute;
+				left:600px;
+				top:300px;
+				border-radius:50% ;
+			}
+			#ball2{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:800px;
+				top:300px;
+				border-radius:50% ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="ball"></div>
+		<div id="ball2"></div>
+		<script>
+			var box = document.getElementById('box');
+			var ball = document.getElementById('ball');
+			var ball2 = document.getElementById('ball2');
+			function drag(obj){
+				obj.onmousedown = function(ev){
+					ev.preventDefault();
+					var disX = ev.clientX - this.getBoundingClientRect().left;
+					var disY = ev.clientY - this.getBoundingClientRect().top;
+					document.onmousemove = function(ev){
+						var l = ev.clientX-disX;
+						var t = ev.clientY-disY;
+						obj.style.left = l+'px';
+						obj.style.top = t+'px';
+					}
+					document.onmouseup = function(){
+						//2.鼠标抬起时，判断小球是否在框内
+						if(check(obj)){
+							//console.log('运动')
+							move(obj);
+							obj.onmousedown = null;
+						}
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+			}
+			function check(obj){
+				var pos1 = obj.getBoundingClientRect();
+				var pos2 = box.getBoundingClientRect();
+				if(pos1.left>pos2.left&&pos1.right<pos2.right&&pos1.top>pos2.top&&pos1.bottom<pos2.bottom){
+					//在
+					return true;
+				}else{
+					//没在
+					return false;
+				}
+			}
+			function move(obj){
+				var pos1 = obj.getBoundingClientRect();
+				var pos2 = box.getBoundingClientRect();
+				var speedX = getSpeed(3);
+				var speedY = getSpeed(3);
+				var x = pos1.left;
+				var y = pos1.top;
+				obj.timer = setInterval(function(){
+					x += speedX;
+					y += speedY;
+					if(x<=pos2.left){
+						speedX = getSpeed(1);
+				        speedY = getSpeed(3);
+					}
+					if((x+pos1.width)>=pos2.right){
+						speedX = getSpeed(2);
+				        speedY = getSpeed(3);
+					}
+					if(y<=pos2.top){
+						speedX = getSpeed(3);
+				        speedY = getSpeed(1);
+					}
+					if((y+pos1.height)>=pos2.bottom){
+						speedX = getSpeed(3);
+				        speedY = getSpeed(2);
+					}
+					obj.style.left = x+'px';
+					obj.style.top = y+'px';
+				},16)
+			}
+			function getSpeed(n){
+				switch(n){
+					case 1:
+						//正，1，5
+						return Math.round(Math.random()*4+1);
+					break;
+					case 2:
+						//负，-1，-5
+						return Math.round(Math.random()*(-4)-1);
+					break;
+					case 3:
+						//可正可负，-5，5
+						return Math.round(Math.random()*10-5);
+					break;
+				}
+			}
+			//1.拖拽
+			drag(ball);
+			drag(ball2);
+			
+			
+		</script>
+	</body>
+</html>

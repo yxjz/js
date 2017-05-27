@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="button" value="按钮"/>
+		<script>
+			var inps = document.getElementsByTagName('input');
+			inps[1].onclick = function(){
+				var val = Number(inps[0].value);
+//				if(fn(val)){
+//					alert(1)
+//				}else{
+//					alert(2)
+//				}
+				
+				alert(fn(val))
+			}
+			function fn(v){
+				//return v>10?'大于10':'小于10'
+				return v<10?'0'+v:''+v;
+			}
+			
+		</script>
+	</body>
+</html>

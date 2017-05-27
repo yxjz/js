@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 * 字符串转成数字
+			 * 忽略第一位非数字后的所有字符
+			 * 忽略前后空格，前边的0
+			 * 转不成就是NaN
+			 * 空字符串转成NaN
+			 	parseInt
+			 		转成整数
+			 	parseFloat
+			 * 		保留小数
+			 * */
+			var n = '10 12235';
+			console.log(parseInt(n));
+			var n1 = '    00001255ps      ';
+			console.log(parseInt(n1));
+			var n2 = '';
+			console.log(parseInt(n2));
+			var n3 = '1244.936n55px';
+			console.log(parseInt(n3));
+			console.log(parseFloat(n3));
+			console.log(parseFloat(n3).toFixed(2));   //转成字符串了1244.94
+		</script>
+	</body>
+</html>

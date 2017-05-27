@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			<li>文字1</li>
+			<li>文字2</li>
+			<li>文字3</li>
+			<li>文字4</li>
+			<li>文字5</li>
+		</ul>
+		<script>
+			/*
+			 	outerHTML
+			 	
+			 * */
+			var list = document.getElementById('list');
+			var lis = list.getElementsByTagName('li');
+			for(var i=0;i<lis.length;i++){
+				lis[i].onclick = function(){
+					this.style.background = 'red';
+					console.log(this.outerHTML)
+				}
+			}
+//			var str = '';
+//			list.innerHTML = '';
+//			for(var i=0;i<5;i++){
+//				list.innerHTML += '<li>文字'+(i+1)+'</li>';
+//				lis[i].onclick = function(){
+//					alert(1)
+//				}
+//			}
+
+		</script>
+	</body>
+</html>

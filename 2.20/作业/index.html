@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 400px;
+				border:1px solid #000;
+				position: relative;
+				font-size:50px;
+			}
+			#left,#right{
+				width: 50px;
+				background: red;
+				position: absolute;
+				transition: 3s;
+				height:0px;
+				overflow: hidden;
+			}
+			#left{
+				left:0;
+			}
+			#right{
+				right:0;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="left">一二三四五</div>
+			<div id="right">上山打老虎</div>
+		</div>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			var left = document.getElementById('left');
+			var right = document.getElementById('right');
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				left.style.height = '300px';
+				right.style.height = '300px';
+			}
+		</script>
+	</body>
+</html>

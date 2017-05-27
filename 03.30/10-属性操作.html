@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div" class="a" abc="2"></div>
+		<script>
+			/*
+			 	属性操作
+			 	前2种，Js的自定义属性
+			 		.  []
+			 		可以获取js添加的自定义属性
+			 * 		不可以获取行间的自定义属性
+			 *  第3种，行间的自定义属性
+			 * 		不能获取js添加的自定义属性
+			 * 		可以获取行间的自定义属性
+			 * 3种都能获取到标签固有属性，比如id
+			 * 
+			 * 	node.getAttribute('属性名')
+			 * 		获取指定属性的属性值
+			 *  node.setAttribute('属性名','属性值')
+			 * 		设置指定属性和属性值
+			 * */
+			var div = document.getElementById('div');
+			//获取
+			//console.log(div.getAttribute('id'))
+			//设置
+			div.setAttribute('class','b c')
+			
+			//通过js添加的自定义属性
+			div.index = 1;
+//			console.log(div['index'])
+//			console.log(div.getAttribute('index'))
+//			console.log(div.abc)
+			console.log(div.getAttribute('abc'))
+		</script>
+	</body>
+</html>

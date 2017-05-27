@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				transition: 3s;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="div"></div>
+		<script>
+			var btn = document.getElementById('btn');
+			var div = document.getElementById('div');
+			btn.onclick = function(){
+				div.style.width = '200px';
+				div.style.height = '200px';
+				div.style.background = 'blue';
+				div.style.opacity = '0';
+			}
+		</script>
+	</body>
+</html>

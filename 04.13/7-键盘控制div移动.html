@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+			/*
+			 	在按键改变时，第一次按下系统会有一个时间间隔，后边就连续了
+			 * 
+			 * */
+			var div1 = document.getElementById('div1');
+			var code = {
+				left:false,
+				right:false,
+				top:false,
+				bottom:false
+			};
+			document.onkeydown = function(ev){
+				switch(ev.keyCode){
+					case 37:
+						code.left = true;
+					break;
+					case 38:
+						code.top = true;
+					break;
+					case 39:
+						code.right = true;
+					break;
+					case 40:
+						code.bottom = true;
+					break;
+				}
+			}
+			document.onkeyup = function(ev){
+				switch(ev.keyCode){
+					case 37:
+						code.left = false;
+					break;
+					case 38:
+						code.top = false;
+					break;
+					case 39:
+						code.right = false;
+					break;
+					case 40:
+						code.bottom = false;
+					break;
+				}
+			}
+			setInterval(function(){
+				var l = parseFloat(getComputedStyle(div1).left);
+				var t = parseFloat(getComputedStyle(div1).top);
+				for(var k in code){
+					if(code[k]&&k=='left'){
+						div1.style.left = l-5+'px';
+					}
+					if(code[k]&&k=='right'){
+						div1.style.left = l+5+'px';
+					}
+					if(code[k]&&k=='top'){
+						div1.style.top = t-5+'px';
+					}
+					if(code[k]&&k=='bottom'){
+						div1.style.top = t+5+'px';
+					}
+				}
+			},15)
+			
+		</script>
+	</body>
+</html>

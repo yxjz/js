@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 200px;
+				height: 200px;
+				line-height:200px;
+				text-align: center;
+				font-size:50px;
+				border:1px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">1</div>
+		<script>
+			/*
+			 	1.开启定时器前，先关闭
+			 	2.开关
+			 * */
+			var div = document.getElementById('div');
+			var timer = null;
+			var onOff = true;
+			div.onclick = function(){
+				var _this = this;
+				//clearInterval(timer);
+				if(onOff){
+					onOff = false;
+					timer = setInterval(function(){
+				
+						_this.innerHTML = ++_this.innerHTML;
+						
+					},1000)
+				}
+				
+			}
+		</script>
+	</body>
+</html>

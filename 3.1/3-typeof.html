@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			/*
+			 	ECMAScript	 		String,Number,Boolean,Undefined,Object,Null
+			 		
+			 	typeof		 		string,number,boolean,undefined,object,function
+			 	null是object	
+			 		
+			 	typeof 操作符
+			 	检测数据类型
+			 	返回值，字符串类型，首字母小写
+			 * 
+			 * */
+			var str = '';
+			console.log(typeof str)    //string
+			var n = 1;
+			console.log(typeof n)  //number
+			var b = true;
+			console.log(typeof b)  //boolean
+			var Null = null;
+			console.log(typeof Null)  //object
+			var a;
+			console.log(typeof a)  //undefined
+			var arr = [];
+			console.log(typeof arr)  //object
+			var obj = {};
+			console.log(typeof obj)   //object
+			var box = document.getElementById('box');
+			console.log(typeof box)   //object
+			var fn = function(){}
+			console.log(typeof fn)   //function
+		</script>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="button" value="开始"/>
+		<input type="button" value="确认"/>
+		
+		<script>
+			/*
+			 	1个输入框
+			 		每次输入数字验证
+			 	2个按钮
+			 		开始
+			 			开始后可以确认，生成一个随机数字炸弹
+			 		确认
+			 			alert,中炸弹提示炸了，没中缩小范围
+
+			 * 
+			 * */
+			var inps = document.getElementsByTagName('input');
+			var begin = true;
+			var num = -1;
+			var min = 0;
+			var max = 100;
+			//开始
+			inps[1].onclick = function(){
+				if(begin){
+					begin = false;
+					num = Math.round(Math.random()*100);
+				}
+			}
+			//确认
+			inps[2].onclick = function(){
+				if(!begin){
+					console.log(num)
+					var val = inps[0].value;
+					if(val == num){
+						begin = true;
+						min = 0;
+						num = -1;
+						max = 100;
+						alert('恭喜你中奖了！')
+					}else{
+						if(val>num){
+							max = val;
+						}
+						if(val<num){
+							min = val;
+						}
+						alert('范围：'+min+'~'+max)
+					}				
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	预解析
+			 		js代码执行之前，会进行预解析的过程
+			 		先找到var声明的变量和函数，提到该作用域最上边解析
+			 * */
+			
+			/*
+			 	a = undefined
+			 * fn = function(){}
+			 * */
+			console.log(a)
+			fn();
+			var a = 1;
+			function fn(){
+				console.log(b)
+				var b = 2;
+			}
+			
+		</script>
+	</body>
+</html>

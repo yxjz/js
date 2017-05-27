@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+		<select name="">
+			<option value="1">一</option>
+			<option value="2">二</option>
+			<option value="3">三</option>
+		</select>
+		<script>
+			/*
+			 	onchange 
+			 		在表单元素失焦时，value改变时触发
+			 * 
+			 * */
+			var txt = document.getElementById('txt');
+			var sel = document.getElementsByTagName('select')[0];
+			txt.onchange = function(){
+				console.log('变了')
+			}
+			sel.onchange = function(){
+				console.log(this.value)
+			}
+		</script>
+	</body>
+</html>

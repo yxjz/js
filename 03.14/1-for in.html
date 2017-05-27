@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var j1 = {
+				a:1,
+				aa:2,
+				aaa:3
+			}
+//			var j2 = {
+//				a:{
+//					b:1,
+//					c:0
+//				},
+//				aa:{
+//					b:2,
+//					c:0
+//				},
+//				aaa:{
+//					b:3,
+//					c:0
+//				}
+//			}
+			var j2 = {};
+			for(var attr in j1){
+				j2[attr] = {};
+				j2[attr].b = j1[attr];
+				j2[attr].c = 0;
+				/*
+				 第一次循环 attr = a
+				 j2.a = {};
+				 j2.a.b = 1
+				 j2.a.c = 0
+				 * */
+			}
+			/*
+			  j2={
+			  	a:{
+			  		
+			  	}
+			  }
+			 * */
+			console.log(j2)
+		</script>
+	</body>
+</html>

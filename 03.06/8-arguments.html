@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	arguments 
+			 		实参的集合
+			 * 		只能在函数内部使用，函数调用时，传入的实参一一对应赋值给形参，同时所有实参会存在arguments里，一般用在不定参的时候
+			 * 		length,数字下标取值
+			 * */
+			
+			function fn(){
+				var n = 0;
+				for(var i=0;i<arguments.length;i++){
+					n += arguments[i];
+				}
+				console.log(n)
+			}
+			fn(1,25,7,89,3,4,7,9,333)
+			fn(1,234,5,7,9,226,333,22,10,246,256)
+		</script>
+	</body>
+</html>

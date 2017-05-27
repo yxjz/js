@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*	
+			 	array.concat(数据1,数据2...)
+			 		把原数组和传入的数据放到新数组里返回
+			 		注意和push的区别
+			 		返回值：
+			 			新数组
+			 * */
+			var arr = [1,2,3,4];
+			//console.log(arr.concat(5,6,{name:7,age:8}));
+			arr.concat([5,6]);//[1,2,3,4,5,6]
+			console.log(arr);//[1,2,3,4]
+			console.log(arr.concat([5,6]));//[1,2,3,4,5,6]
+		</script>
+	</body>
+</html>

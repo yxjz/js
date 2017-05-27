@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			/*
+			 	css获取元素
+				 	id选择器  #
+				 	class    .
+				 	标签       div
+				 	
+				 js获取元素
+				 	通过id
+ 		document.getElementById('id名')
+ 		
+ 		
+ 					通过标签名
+ 		document.getElementsByTagName('标签名')
+ 		元素.getElementsByTagName('标签名')
+ 		document和元素限制获取范围，在该范围内通过标签名获取一组元素，类数组，数字下标取值[0]，从0开始,length
+ 		
+ 		注意：只有一个元素，也必须加数字下标[0]，才能操作该元素				 
+ 		
+ 					通过class
+ 				document.getElementsByClassName('class名')
+ 		元素.getElementsByClassName('class名')
+ 		document和元素限制获取范围，在该范围内通过class名获取一组元素，类数组，数字下标取值[0]，从0开始,length
+ 		注意：只有一个元素，也必须加数字下标[0]，才能操作该元素	
+ 					
+				 	
+			 * */
+			var lis = document.getElementsByClassName('active');
+	
+			console.log(lis,lis.length)
+			lis[0].style.background = 'red';
+			lis[1].style.background = 'blue';
+			
+		</script>
+	</body>
+</html>

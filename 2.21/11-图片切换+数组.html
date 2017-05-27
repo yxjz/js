@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 480px;
+				border:1px solid #000;
+				margin: 50px auto;
+				position: relative;
+			}
+			#box a{
+				position: absolute;
+				top:200px;
+			}
+			#prev{
+				left:-100px;
+			}
+			#next{
+				right:-100px;
+			}
+			img{
+				vertical-align: top;
+				border: 0;
+				width: 400px;
+				height: 480px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="" alt="" id="img"/>
+			<a href="javascript:;" id="prev">上一张</a>
+			<a href="javascript:;" id="next">下一张</a>
+		</div>
+		<script>
+			/*
+			 	a标签做点击用，href里加javascript:;
+			 * */
+			var img = document.getElementById('img');
+			var prev = document.getElementById('prev');
+			var next = document.getElementById('next');
+			//用数组存图片地址
+			var arrImgs = ['img/1.png','img/2.png','img/3.png','img/4.png'];
+			//数组第一位取值是0，所以这里n是0，切换图片就是切换数组的数字下标n
+			var n = 0;
+			//初始化
+			img.src = arrImgs[n];
+			//上一张
+			prev.onclick = function(){
+				//alert(1)
+				n--;
+				//顺序
+//				if(n<0){
+//					n = 0;
+//				}
+				//循环
+				if(n<0){
+					n = arrImgs.length-1;
+				}
+				img.src = arrImgs[n];
+			}
+			//下一张
+			next.onclick = function(){
+				//alert(2)
+				n++;
+				//顺序
+//				if(n>arrImgs.length-1){
+//					n = arrImgs.length-1;
+//				}
+				//循环
+				if(n>arrImgs.length-1){
+					n = 0;
+				}
+				img.src = arrImgs[n];
+			}
+		</script>
+	</body>
+</html>

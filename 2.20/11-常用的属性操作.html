@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" class="red" style="width:100px;height:100px;">
+			文字
+			<span class="sp">span</span>
+		</div>
+		<img src="r-2.jpg" alt="" id="img"/>
+		<script>
+			/*
+			 	常用属性操作
+			 		id
+			 		className
+			 		src -- 获取到的是绝对地址
+			 		style
+			 		innerHTML获取到的是标签对内的所有内容(包括子标签，子标签行间属性),字符串(可以识别标签)
+			 		innerText获取到的是标签对内的所有文本内容(不识别标签)
+			 * 
+			 * */
+			var box = document.getElementById('box');
+			var img = document.getElementById('img');
+			box.id = 'box2';
+			box.className = 'blue red';
+			//console.log(box.id)
+			//console.log(img.src)
+			box.style.cssText = 'width:200px;height:200px;background: red;';
+			//console.log(box.style.cssText)
+			console.log(box.innerHTML)
+			console.log(box.innerText)
+			//box.innerHTML = '<p>p</p>'
+			box.innerText = '<p>p</p>'
+		</script>
+	</body>
+</html>

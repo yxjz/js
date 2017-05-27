@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				list-style: none;
+			}
+			#list ul{
+				/*display: none;*/
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<!--<li>
+				<h2>第一级</h2>
+				<ul>1</ul>
+			</li>
+			<li>
+				<h2>第一级</h2>
+			</li>
+			<li>
+				<h2>第一级</h2>
+				<ul>1</ul>
+			</li>-->
+		</ul>
+		<script>
+			var data = [
+				{
+					name:'第一级',
+					child:[
+						{
+							name:'第二级',
+							child:[
+								{
+									name:'第三级',
+									child:[
+										{
+											name:'第四级',
+											child:[]
+										},
+										{
+											name:'第四级',
+											child:[]
+										}
+									]
+								},
+								{
+									name:'第三级',
+									child:[]
+								},
+								{
+									name:'第三级',
+									child:[
+										{
+											name:'第四级',
+											child:[]
+										},
+										{
+											name:'第四级',
+											child:[]
+										}
+									]
+								}
+							]
+						},
+						{
+							name:'第二级',
+							child:[
+								{
+									name:'第三级',
+									child:[]
+								},
+								{
+									name:'第三级',
+									child:[]
+								}
+							]
+						},
+						{
+							name:'第二级',
+							child:[]
+						}
+					]
+				},
+				{
+					name:'第一级',
+					child:[
+						{
+							name:'第二级',
+							child:[
+								{
+									name:'第三级',
+									child:[]
+								},
+								{
+									name:'第三级',
+									child:[]
+								},
+								{
+									name:'第三级',
+									child:[]
+								}
+							]
+						},
+						{
+							name:'第二级',
+							child:[
+								{
+									name:'第三级',
+									child:[]
+								},
+								{
+									name:'第三级',
+									child:[]
+								}
+							]
+						},
+						{
+							name:'第二级',
+							child:[]
+						}
+					]
+				},
+				{
+					name:'第一级',
+					child:[
+						{
+							name:'第二级',
+							child:[
+								{
+									name:'第三级',
+									child:[]
+								},
+								{
+									name:'第三级',
+									child:[]
+								},
+								{
+									name:'第三级',
+									child:[]
+								}
+							]
+						},
+						{
+							name:'第二级',
+							child:[
+								{
+									name:'第三级',
+									child:[]
+								},
+								{
+									name:'第三级',
+									child:[]
+								}
+							]
+						},
+						{
+							name:'第二级',
+							child:[]
+						}
+					]
+				}
+			];
+			//console.log(data);
+			var data2 = [
+				{
+					name:'第一级',
+					child:[1]
+				},
+				{
+					name:'第一级',
+					child:[]
+				},
+				{
+					name:'第一级',
+					child:[1]
+				}
+			];
+			var list = document.getElementById('list');
+			
+			function show(arr){
+				var str = fn(arr);
+				function fn(arr){
+					//console.log(arr)
+					var str2 = '';
+					arr.forEach(function(a){
+						console.log(a)
+						if(a.child.length==0){
+							//没有子集
+							str2 += '<li><h2>'+a.name+'</h2></li>';
+						}else{
+							//有子集
+							str2 += '<li><h2>'+a.name+'</h2><ul>'+fn(a.child)+'</ul></li>';
+						}
+					})
+					return str2;
+				}
+				return str;
+			}
+			list.innerHTML = show(data);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin:100px auto;
+				-webkit-transform:scale(2) ;
+				transform:scale(2) ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script>
+			/*
+			 	由于css里设置transform，用getComputedStyle获取到的是矩阵，不好处理
+			 	解决办法：
+			 		用js设置transform,并用自定义属性存
+			 * */
+			/*
+			 	cssTransform
+			 		专门设置，获取transform的，设置不能写在css样式表里，只能用这个方法设置，不然无法获取
+			 		只写前2个参数是获取，写3个参数是设置
+			 		参数:
+			 			el：元素,obj
+			 			attr:属性，string
+			 			val:值	
+			 * */
+			cssTransform(div,'scaleX',200)
+			cssTransform(div,'translate',200)
+			function cssTransform(el,attr,val){
+				if(!el.transform){
+					el.transform = {};
+				}
+				/*
+				 el.transform = {
+				 	scale:100
+				 }
+				 * */
+				if(arguments.length==2){
+					//获取
+					if(typeof el.transform[attr]==='undefined'){
+						//没设置过，设置默认值
+						switch(attr){
+							case 'scale':
+							case 'scaleX':
+							case 'scaleY':
+							case 'scaleZ':
+								el.transform[attr] = 100;
+							break;
+							default:
+								el.transform[attr] = 0;
+						}
+					}
+					return el.transform[attr];
+				}
+				//设置
+				el.transform[attr] = val;
+				var transformVal = '';
+				for(var attr in el.transform){
+					switch(attr){
+						case 'scale':
+						case 'scaleX':
+						case 'scaleY':
+						case 'scaleZ':
+						transformVal +=	' '+attr+'('+(el.transform[attr]/100)+')';
+						//div.style.transform = 'scale(2)'				
+						break;
+						case 'rotate':
+						case 'rotateX':
+						case 'rotateY':
+						case 'skewX':
+						case 'skewY':
+						//div.style.transform = 'rotate(30deg)'	
+							transformVal += ' '+attr+'('+el.transform[attr]+'deg)';
+						break;
+						default:
+							transformVal += ' '+attr+'('+el.transform[attr]+'px)';
+					}
+				}
+				el.style.transform = el.style.webkitTransform = transformVal;
+			}
+		</script>
+	</body>
+</html>

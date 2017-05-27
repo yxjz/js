@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				margin-top:50px;
+				position: relative;
+				border: 1px solid #000;
+				width:300px;
+				height:300px;
+			}
+			#box div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="box"></div>
+		<script>
+			/*	(left,top)
+			 	(0,0)              (200,0)
+			 		(50,50)    (150,50)
+			 			(100,100)
+			 * 
+			 * Math.ceil(数字)向上取整
+			 * */
+			var btn = document.getElementById('btn');
+			var box = document.getElementById('box');
+			var str = '';
+			var len = 5;
+			//找到的length存起来，优化性能
+			//var len = lis.length
+			for(var i=0;i<len;i++){
+				/*
+				 	第一次循环，i=0
+				 	1.声明变量l=0
+				 	2.判断i<3，所有走上边
+				 	3.声明变量t=0
+				 	4.str='<div style="left:0px;top:0px;">1<div>'
+				 	
+				 	第二次循环，i=1
+				 	1.重新声明l=50
+				 	2.判断i<3，所以还走上边
+				 	3.重新声明t=50
+				 	4.str ='<div style="left:0px;top:0px;">1<div><div style="left:50px;top:50px;">2<div>'
+				 * */
+				var l = i*50;
+				if(i<Math.ceil(len/2)){
+					var t = i*50;
+				}else{
+					var t = (len-1-i)*50;
+				}
+				str += '<div style="left:'+l+'px;top:'+t+'px;">'+(i+1)+'</div>';	
+			}
+			box.innerHTML = str;
+		</script>
+	</body>
+</html>

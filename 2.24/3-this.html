@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			/*
+			 	this
+			 		谁调用这个this,this就是谁
+			 		关键字
+			 		
+			 		函数外部调用
+			 			指向window
+			 		函数内部调用
+			 			事件调用
+			 				元素.onclick = function(){
+			 					this->元素
+			 				}
+			 			直接调用
+			 				指向window
+			 * 
+			 * */
+			//alert(this)
+			//console.dir(window)
+			var box = document.getElementById('box');
+			box.onclick = function(){
+				//alert(this)
+				//注意，函数内调用有名函数，有名函数内的this指向window
+				fn();//this->window
+			}
+			function fn(){
+				alert(this);
+			}
+			//fn();
+		</script>
+	</body>
+</html>

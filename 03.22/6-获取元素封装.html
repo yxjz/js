@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			<li class="abc"></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul id="list2">
+			<li class="abc"></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			/*#div,.div,div*/
+			function getEle(name,obj){
+				obj = obj || document;
+				var t = name.charAt(0);
+				//console.log(t)
+				var name1 = name.substring(1);
+				if(t == '#'){
+					return document.getElementById(name1);
+				}else if(t == '.'){
+					return obj.getElementsByClassName(name1);
+				}else{
+					return obj.getElementsByTagName(name);
+				}	
+			}
+			var list = getEle('#list');
+			var abc = getEle('.abc',list);
+			var lis = getEle('li',list)
+			console.log(lis)
+		</script>
+	</body>
+</html>

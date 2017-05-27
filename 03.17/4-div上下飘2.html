@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				position: absolute;
+				top:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script src="move.js"></script>
+		<script>
+			//生成15个div
+			var str = '';
+			for(var i=0;i<15;i++){
+				str += '<div style="left:'+i*55+'px;"></div>';
+			}
+			document.body.innerHTML += str;
+			var btn = document.getElementById('btn');
+			var divs = document.getElementsByTagName('div');
+			//n控制逐个给div加运动
+			var n = 0;
+			var timer = null;
+			//判断当前运动应该向上还是向下
+			var onOff = true;
+			//控制运动中不能再点，重复运动
+			btn.on = true;
+			btn.onclick = function(){
+				//如果btn.on为true，可以运动
+				if(this.on){
+					//一进来 btn.on变false，不让点了
+					this.on = false;
+					//开启定时器，逐个给div加运动
+					timer = setInterval(function(){
+						fn(n);
+						n++;
+						//n等于divs.length，证明所有div都加上运动了
+						if(n == divs.length){
+							//关闭给div延迟加运动的定时器，n重置0
+							n = 0;
+							clearInterval(timer);
+						}
+					},200);
+				}
+			}
+			//运动函数，封函数可以存下当前div的下标，在回调函数是判断用，不封函数就要想办法存了
+			function fn(m){
+				//三目简化代码，onOff为true向下就是400，为false是向上就是50
+				move(divs[m],{top:onOff?400:50},2000,'linear',function(){
+					//单个div运动完，on取反
+					divs[m].on = !divs[m].on;
+					//类似判断全选，看下所有div.on
+					var k = 0;
+					for(var i=0;i<divs.length;i++){
+						//如果div.on是真就k++;
+						if(divs[i].on){
+							k++;
+						}
+					}
+					//如果所有div都运动到下边，所有div.on都是false,就不进上述条件，k还是0，如果所有div都运动到上边，所有div.on都是true，每次都k++，最后k等于div.length
+					if(k==0||k==divs.length){
+						//onOff取反，变成下次要运动的状态
+						//btn.on为true，可以再次点击运动
+						btn.on = true;
+						onOff = !onOff;
+					}
+				});
+			}
+			for(var i=0;i<divs.length;i++){
+				//控制单个div运动状态，运动完取反
+				divs[i].on = true;
+				//索引值，知道第几个div
+				divs[i].index = i;
+				divs[i].onclick = function(){
+					//如果btn.on为true，可以运动
+					if(btn.on){
+						//btn.on为false，不让运动完时重复点击
+						btn.on = false;
+						//用2个变量，向左向右给div加运动
+						var num1 = this.index+1;
+						var num2 = this.index-1;
+						//当前点击的先运动
+						fn(this.index);
+						//开启定时器，向左向右逐个给div加运动
+						timer = setInterval(function(){
+							//num1控制点击的div的右边的div
+							if(num1<divs.length){
+								fn(num1);
+							}
+							num1++;
+							//num2控制点击的div的左边的div
+							if(num2>=0){
+								fn(num2);
+							}
+							num2--;
+							//如果num1>divs.length-1并且num2<0，所有div都加上运动了，关闭定时器
+							if(num1>divs.length-1 && num2<0){
+								clearInterval(timer);
+							}
+						},200);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

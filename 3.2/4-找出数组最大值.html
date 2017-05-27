@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr = [2,4,7,8,2,7,9,6];
+			/*
+			 	思路：
+			 		1.变量用来存最大值，和数组里每一位挨个比较，哪位比变量存的值大，就替换，最终变量存的是数组里的最大值
+			 * */
+			//var max = arr[0];
+			var max = -Infinity;
+			for(var i=0;i<arr.length;i++){
+				if(max<arr[i]){
+					max = arr[i]
+				}
+			}
+			console.log(max)
+		</script>
+	</body>
+</html>

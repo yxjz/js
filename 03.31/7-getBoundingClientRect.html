@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin:0;
+			}
+			#div1{
+				width: 400px;
+				height: 400px;
+				border: 10px solid #000;
+				position: absolute;
+				left:100px;
+				top:100px;
+			}
+			#div2{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top:100px;
+				left:100px;	
+			}
+			#div3{
+				width: 50px;
+				height: 50px;
+				background: yellow;
+				position: absolute;
+				top:50px;
+				left:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+		</div>
+		<script>
+			/*
+			 	obj.getBoundingClientRect()
+			 * 		获取元素到可视区的距离,obj
+			 * 	6个属性，不带单位
+			 * 		top
+			 * 		bottom
+			 *      left
+			 *      right
+			 *      width
+			 * 		height
+			 * 
+			 * 		right = left+width
+			 *      bottom = top+height
+			 * 		width/height是元素实际大小，包括边框
+			 * */
+			var div1 = document.getElementById('div1');
+			var div2 = document.getElementById('div2');
+			var div3 = document.getElementById('div3');
+			console.log(div1.getBoundingClientRect().top)
+		</script>
+	</body>
+</html>

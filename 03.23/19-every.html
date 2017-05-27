@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 		array.every(function(a,b,c){
+			 			return 条件
+			 		})
+			 		a:值
+				 	b:index
+				 	c:arr
+				 	
+				 	返回值：
+				 		所有的return的结果都是true，才返回true，有一个是false,就返回false
+			 * 			
+			 * */
+			var arr = [1,2,3,4,5];
+			console.log(arr.every(function(a,b,c){
+				return a>0;
+			}))
+		</script>
+	</body>
+</html>

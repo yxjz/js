@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.active{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<script>
+			var uls = document.getElementsByTagName('ul');
+			for(var i=0;i<uls.length;i++){
+				fn(i)
+			}
+			var n = 0;
+			function fn(n){
+				var lis = uls[n].getElementsByTagName('li');
+				
+				for(var j=0;j<lis.length;j++){
+					lis[j].onclick = function(){
+						fn2(this,lis)
+			
+					}
+				}
+			}
+			function fn2(_this,ls){
+				for(var i=0;i<ls.length;i++){
+							ls[i].className = '';
+						}
+						_this.className = 'active';
+			}
+		</script>
+	</body>
+</html>

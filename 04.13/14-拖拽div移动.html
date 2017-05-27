@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0;
+				top:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			var div1 = document.getElementById('div1');
+			var btn = document.getElementById('btn');
+			var arr = [];
+			drag(div1)
+			function drag(obj){
+				obj.onmousedown = function(ev){
+					ev.preventDefault();
+					var disX = ev.clientX - this.getBoundingClientRect().left;
+					var disY = ev.clientY - this.getBoundingClientRect().top;
+					document.onmousemove = function(ev){
+						var l = ev.clientX-disX;
+						var t = ev.clientY-disY;
+						arr.push([l,t]);
+						obj.style.left = l+'px';
+						obj.style.top = t+'px';
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+			}
+			var timer = null;
+			btn.onclick = function(){
+				if(arr.length){
+					timer = setInterval(function(){
+						div1.style.left = arr[arr.length-1][0]+'px';
+						div1.style.top = arr[arr.length-1][1]+'px';
+						arr.pop();
+						if(!arr.length){
+							clearInterval(timer);
+						}
+					},5)
+				}
+			}
+		</script>
+	</body>
+</html>

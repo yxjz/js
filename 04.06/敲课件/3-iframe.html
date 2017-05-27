@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		3
+		<script>
+			/*
+			 	top对象，指向最顶层框架的window
+			 	parent对象，	指向父级框架的window
+			 * 
+			 * */
+			console.log(top==window)
+			window.onload = function(){
+				top.document.body.style.background = 'yellow';
+			}
+		</script>
+	</body>
+</html>

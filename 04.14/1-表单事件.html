@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="get">
+			<input type="text" name="userName"/>
+			<input type="password" name="password"/>
+			<br />
+			<input type="radio" name="sex" value="man"/>男
+			<input type="radio" name="sex" value="woman"/>女
+			<br />
+			<input type="checkbox" name="hobby" value="travel"/>旅游
+			<input type="checkbox" name="hobby" value="sport"/>运动
+			<input type="checkbox" name="hobby" value="food"/>美食
+			<input type="checkbox" name="hobby" value="photo"/>摄影
+			<input type="checkbox" name="hobby" value="game"/>游戏
+			<br />
+			<input type="button" name="btn" value="按钮"/>
+			<input type="reset" value="重置"/>
+			<input type="submit" value="提交"/>
+		</form>
+		
+		<script>
+			/*
+			 	form.submit() - 提交方法
+			 		不会触发onsubmit事件，必须先验证成功再提交
+			 *  onsubmit - 提交时触发的事件
+			 * 
+			 *  form.reset() - 重置方法
+			 *  form.onreset - 重置事件
+			 * 
+			 * 	onchange - 失焦时，内容改变触发
+			 *  oninput - 输入每个值都触发
+			 * */
+			var form = document.getElementsByTagName('form')[0];
+			form.btn.onclick = function(){
+//				if(form.userName.value.length>3){
+//					form.submit()
+//				}
+				//form.reset()
+			}
+//			form.onsubmit = function(ev){
+//				if(!(form.userName.value.length>3)){
+//					ev.preventDefault();
+//				}
+//			}
+			form.onreset = function(){
+				alert(1)
+			}
+//			form.userName.onchange = function(){
+//				console.log(1)
+//			}
+//			form.userName.oninput = function(){
+//				console.log(this.value)
+//			}
+		</script>
+	</body>
+</html>

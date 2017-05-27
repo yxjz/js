@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			/*
+			 	Array.from(类数组)
+			 		把类数组转成数组
+			 * */
+			var lis = document.getElementsByTagName('li');
+			var arr = Array.from(lis);
+			arr.pop();
+			console.log(arr)
+		</script>
+	</body>
+</html>

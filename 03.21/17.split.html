@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 * string.split(s,[length]),array
+			 *作用：
+			 * 		字符串用分隔符分隔，放到数组里返回
+			 * 参数：
+			 * 	 s:分隔符，string
+			 *  [length]:保留长度，number
+			 * 注意：
+			 * 		1.不传参数，把整个字符串作为一项放到数组里返回
+			 * 		2.分割符是空字符串，把字符串每一个字符为一项放到数组里返回
+			 * 		3.分隔符是字符串里没有的字符，把整个字符串作为一项放到数组里返回
+			 * 		4.分隔符是字符串里的字符，用该字符分隔字符串，把每一个结果放到数组里返回
+			 * */
+			var str = 'mi a,ovabc';
+			//console.log(str.split())
+			//console.log(str.split(''))
+			//console.log(str.split('z'))
+			console.log(str.split('a'))
+			console.log(str.split('a',1))
+		</script>
+	</body>
+</html>

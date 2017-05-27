@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			/*
+			 * css选择器获取元素
+			 * querySelector
+			 * 		document或者元素限制范围，在该范围内通过css选择器获取一个元素，即使用css选择器应该获取到的是一组元素，也只能获取到第一个
+			 	document.querySelector('css选择器');
+			 	元素.querySelector('css选择器');
+			 	
+			 	
+			 	querySelectorAll
+			 	document或者元素限制范围，在该范围内通过css选择器获取一组元素，类数组，数字下标取值[0],从0开始，length
+			 	只有一个元素也要加数字下标[0]获取操作元素
+			 	document.querySelectorAll('css选择器');
+			 	元素.querySelectorAll('css选择器');
+			 * */
+			var list = document.querySelector('#list');
+			var lis = list.querySelector('li');
+			var li1 = document.querySelector('#list li')
+//			console.log(list)
+//			console.log(lis)
+//			console.log(li1)
+			
+			
+			var list2 = document.querySelectorAll('#list');
+			var lis2 = list2[0].querySelectorAll('li');
+			console.log(list2.length)
+			console.log(lis2)
+		</script>
+	</body>
+</html>

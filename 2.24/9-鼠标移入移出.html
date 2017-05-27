@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+			#box div{
+				width: 100px;
+				height: 100px;
+				background:yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div></div>
+		</div>
+		<script>
+			/*
+			 	onmouseover
+			 		鼠标移入事件
+			 	onmouseout
+			 		鼠标移出事件
+			 		
+			 	从父级移入子级，会触发一个父级的鼠标移出、移入事件	
+			 * 
+			 * */
+			var box = document.getElementById('box');
+			box.onmouseover = function(){
+				console.log('我进来了')
+			}
+			box.onmouseout = function(){
+				console.log('我又出来了，你打我啊')
+			}
+		</script>
+	</body>
+</html>

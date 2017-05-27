@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div2{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			#div1{
+				width: 100px;
+				height: 100px;
+				padding:100px;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2"></div>
+		</div>
+		<script>
+			/*
+			 	鼠标事件
+			 		onclick - 单击事件
+			 		ondblclick - 双击事件
+			 			在极短时间间隔内，连续触发2次click，才会触发双击事件
+			 * 		onmousedown - 鼠标按下
+			 * 		onmouseup - 鼠标抬起
+			 * 		触发顺序
+			 * 		mousedown - mouseup - click
+			 * 
+			 * 		onmouseover - 鼠标移入，从元素外移入元素内，移入子元素会触发
+			 * 		onmouseout -  鼠标移出，从元素内移出元素外，移出子元素会触发
+			 * 		
+			 * 		onmouseenter - 鼠标移入，从元素外移入，子元素不触发，不冒泡
+			 * 		onmouseleave - 鼠标移出，从元素内移出，子元素不触发，不冒泡
+			 * 
+			 * 		onmousemove - 鼠标移动,在元素上移动，一定时间间隔触发，不是移动1px触发一次
+			 * 		
+			 * 		onmousewheel - 鼠标滚轮
+			 * */
+			var timer = null;
+			document.onclick = function(){
+				clearTimeout(timer);
+				timer = setTimeout(function(){
+					console.log('click')
+				},200)
+			}
+			document.onmousedown = function(){
+				//console.log('mousedown')
+			}
+			document.onmouseup = function(){
+				//console.log('mouseup')
+			}
+			document.ondblclick = function(){
+				clearTimeout(timer);
+				console.log('dblclick')
+			}
+			var div1 = document.getElementById('div1');
+			var div2 = document.getElementById('div2');
+			div1.onclick = function(){
+				alert(1)
+			}
+//			div1.onmousemove = function(){
+//				console.log('mousemove')
+//			}
+			div1.onmousewheel = function(){
+				console.log('mousewheel')
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div2{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			#div1{
+				width: 100px;
+				height: 100px;
+				padding:100px;
+				background: yellow;
+				position: absolute;
+				left:200px;
+				top:100px;
+			}
+		</style>
+	</head>
+	<body style="height:3000px;">
+		<div id="div1">
+			<div id="div2"></div>
+		</div>
+		<script>
+			/*
+			 	鼠标事件对象
+			 		功能键
+			 			true:按着，false:没按
+			 		altKey
+			 		shiftKey
+			 		ctrlKey
+			 		
+			 		鼠标事件触发时，鼠标距离可视区左边和上边的距离
+			 		clientX
+			 		clientY
+			 		
+			 		鼠标事件触发时，鼠标距离文档内容左边和上边的距离，clientY+滚动距离 = pageY,ie低版本不兼容，需要获取clientY+滚动距离
+			 		pageX
+			 		pageY
+			 		
+			 		鼠标事件触发时，鼠标距离浏览器窗口左边和上边的距离
+			 		screenX
+			 		screenY
+			 		
+			 		鼠标事件触发时，鼠标距离该元素左边和上边的距离，低版本不兼容，clientX-元素到可视区距离 = 鼠标到元素距离
+			 		offsetX
+			 		offsetY
+			 		
+			 		which - 键值
+			 			chrome下click只有左键触发
+			 			firefox下click都触发
+			 			mousedown,3个键都触发
+			 			1左键，2中键，3右键
+			 * */
+//			document.onclick = function(ev){
+//				console.log(ev)
+//			}
+			document.onmousedown = function(ev){
+				console.log(ev)
+			}
+			var div1 = document.getElementById('div1');
+			var div2 = document.getElementById('div2');
+//			div2.onclick = function(ev){
+//				console.log(ev)
+//			}
+		</script>
+	</body>
+</html>

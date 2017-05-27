@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top:100px;
+				left:200px;
+				
+			}
+			#div2{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				position: absolute;
+				top:100px;
+				left:400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<script>
+			var div1 = document.getElementById('div1');
+			var div2 = document.getElementById('div2');
+			drag(div1);
+			function drag(obj){
+				obj.onmousedown = function(ev){
+					ev.preventDefault();
+					var disX = ev.clientX - this.getBoundingClientRect().left;
+					var disY = ev.clientY - this.getBoundingClientRect().top;
+					document.onmousemove = function(ev){
+						var l = ev.clientX-disX;
+						var t = ev.clientY-disY;
+						obj.style.left = l+'px';
+						obj.style.top = t+'px';
+						if(duang(obj,div2)){
+							//碰上变黄
+							div2.style.background = 'yellow';
+						}else{
+							//没碰上变回蓝
+							div2.style.background = '';
+						}
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+			}
+			function duang(obj1,obj2){
+				var pos1 = obj1.getBoundingClientRect();
+				var pos2 = obj2.getBoundingClientRect();
+				//没碰上的情况
+				if(pos1.right<pos2.left||pos1.bottom<pos2.top||pos1.left>pos2.right||pos1.top>pos2.bottom){
+					//有一个符合就是没碰上
+					return false;
+				}else{
+					return true;
+				}	
+			}
+		</script>
+	</body>
+</html>

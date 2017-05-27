@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			a{
+				text-decoration: none;
+				padding:10px 20px;
+				float: left;
+				margin-right:10px;
+				border: 5px solid #000;
+			}
+			.active{
+				border-color: red;
+				color: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="javascript:;">男</a>
+		<a href="javascript:;">女</a>
+		<a href="javascript:;">老神仙</a>
+		<script>
+			var as = document.getElementsByTagName('a');
+			for(var i=0;i<as.length;i++){
+				as[i].onclick = function(){
+					for(var i=0;i<as.length;i++){
+						as[i].className = '';
+					}
+					this.className = 'active';
+				}
+			}
+		</script>
+	</body>
+</html>

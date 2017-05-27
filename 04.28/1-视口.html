@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			/*
+			 	视口
+			 		默认为980
+			 * 
+			 * */
+			
+			(function(){
+				var w = screen.width;
+				var targetW = 320;
+				var scale = w/targetW;
+				var meta = document.createElement('meta');
+				meta.name = 'viewport';
+				meta.content = 'user-scalable=no,width=device-width,initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale;
+				document.head.appendChild(meta);
+//			document.body.innerHTML = innerWidth
+				var box = document.getElementById('box')
+				document.addEventListener('click',function(){
+					alert(1)
+				})
+
+			})()
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			/*
+				函数function
+					作用：类似变量，复用多行代码
+					有名函数
+						声明有名函数
+							function fn(){
+								
+							}
+						直接调用
+							fn()
+						事件调用
+							元素.onclick = 函数名
+						注意：函数名后边不加括号，不然还没点就执行了
+						
+					匿名函数
+						function(){
+							
+						}
+						注意：直接声明匿名函数会报错
+						事件声明
+						元素.onclick = function(){
+							
+						}
+						
+			 * */
+			var btn = document.getElementById('btn');
+			//有名函数声明
+			function fn(){
+				alert(1)
+			}
+			//有名函数直接调用
+//			fn()
+//			fn()
+//			fn()
+			//有名函数事件调用，注意别加括号
+			btn.onclick = fn;
+			//function (){}//报错，直接声明匿名函数会报错
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	函数function
+			 		复用代码，声明，在想用的地方调用，里边的代码就会逐行执行
+			 		
+			 	函数声明式
+			 		function fn(){}
+			 		可以先声明后调用，也可以先调用后声明
+			 	函数表达式
+			 		var fn = function(){}
+			 * 		必须先声明后调用
+			 * */
+			fn();
+			function fn(){
+				console.log(1)
+			}
+			fn1();  //报错
+			var fn1 = function(){
+				console.log(2)
+			}
+			
+		</script>
+	</body>
+</html>

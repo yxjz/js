@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	冒泡算法
+			 		数组从小到大排序
+			 	逐位对比，前边比后边大，就交换位置，比较一轮，最大值在最后一位	
+			 * */
+			var arr = [1,2,5,8,7,6,4,3];
+			var n = 0;
+			function bubbleSort(arr){
+				//比较多少轮
+				for(var i=0;i<arr.length-1;i++){
+					//每一轮
+					for(var j=0;j<arr.length-1;j++){
+						//比较，前边比后边大，就交换位置
+						var a = arr[j];
+						var b = arr[j+1];
+						if(arr[j]>arr[j+1]){
+							arr[j] = b;
+							arr[j+1] = a;
+						}
+						n++;
+					}
+				}
+				return arr;
+			}
+			
+			console.log(bubbleSort(arr))
+			console.log(n)
+		</script>
+	</body>
+</html>

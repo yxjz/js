@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	转成数字
+			 		Number()
+			 		
+			 		NaN 
+			 			not a number
+			 		数据类型是number	,不能转成纯数字，就转成NaN，自己不等于自己
+			 		isNaN()
+			 		如果是NaN,true
+			 		不是NaN,false
+			 * */
+			/*
+			 	1.字符串
+			 		空字符串  --- 0
+			 		忽略前后空格
+			 		忽略前边的0
+			 		转不成纯数字 --- NaN
+			 		
+			 * */
+			
+			var s1 = '';
+			var s2 = '    12    ';
+			var s3 = '    0000012    ';
+			var s4 = '12px';
+			var s5 = '1.2';
+			var n = NaN;
+			console.log(Number(s1))
+			console.log(Number(s2))
+			console.log(Number(s3))
+			console.log(Number(s4))
+			console.log(typeof n)
+			console.log(n == NaN)
+			console.log(isNaN(s4))
+			console.log(Number(s5))
+			
+			//2.布尔值
+			/*
+			 	true --- 1
+			 	false --- 0
+			 * */
+			var b = true;
+			var b2 = false;
+			console.log(Number(b))
+			console.log(Number(b2))
+			
+			//3.null
+			// null --- 0
+			var Null = null;
+			console.log(Number(Null))
+			
+			//4.undefined
+			// undefined --- NaN
+			var u;
+			console.log(Number(u))
+			
+			//5.object
+			/*
+			 	数组：
+			 		空数组 --- 0 
+			 		非空  --- NaN
+			 * */
+			var arr = [];
+			var arr2 = [1,2,3];
+			console.log(Number(arr))
+			
+			//键值对 --- NaN
+			var j1 = {};
+			var j2 = {
+				name:'123'
+			}
+			console.log(Number(j1))
+			console.log(Number(j2))
+			console.log(isNaN(s4))
+		</script>
+	</body>
+</html>

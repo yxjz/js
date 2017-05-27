@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	键盘事件
+			 		不是所有元素都有键盘事件，只有可输入的元素才会有键盘事件，比如：document,输入框
+			 		keydown - 按下按键
+			 		所有按键都会触发，按住不放会连续触发
+			 		keypress -功能键不触发，可输入文本才会触发，按住不放会连续触发
+			 		键值区分大小写
+			 		65-90：A-Z
+			 		97-122：a-z
+			 		
+			 		keyup - 抬起按键
+			 		所有按键都会触发，抬起瞬间触发一次
+			 		顺序
+			 		keydown - keypress - keyup
+			 		功能键
+			 			true:按着，false:没按
+			 		altKey
+			 		shiftKey
+			 		ctrlKey
+			 		
+			 		keyCode - 键值
+			 			只是键盘事件独有的
+			 		which - 键值
+			 			可输入设备都有
+			 		常用
+			 			37-左
+			 			38-上
+			 			39-右
+			 			40-下
+			 			13-回车
+			 			32-空格
+			 			48-57：0-9
+			 			65-90：a-z
+			 * */
+			document.onkeydown = function(ev){
+				//console.log('keydown')
+				//console.log(ev.keyCode)
+			}
+			document.onkeypress = function(ev){
+				//console.log('keypress')
+				console.log(ev.keyCode)
+			}
+//			document.onkeyup = function(ev){
+//				console.log('keyup')
+//			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="checkbox" value="火车"/>火车
+		<input type="checkbox" value="汽车"/>汽车
+		<input type="checkbox" value="飞机"/>飞机
+		<input type="checkbox" value="自行车"/>自行车
+		<input type="checkbox" value="地铁"/>地铁
+		<input type="checkbox" value="摩托车"/>摩托车
+		<script>
+			var inps = document.getElementsByTagName('input');
+			for(var i=1;i<inps.length;i++){
+				inps[i].onclick = function(){
+					var str = '';
+					for(var i=1;i<inps.length;i++){
+						if(inps[i].checked){
+							str += inps[i].value;
+						}
+					}
+					inps[0].value = str;
+				}
+			}
+		</script>
+	</body>
+</html>

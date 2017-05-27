@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			<li class="a"></li>
+			<li class="a b"></li>
+			<li class="a b c"></li>
+		</ul>
+		<script>
+			var lis = document.getElementsByTagName('li');
+			//lis[0].className += ' d';
+			//lis[2].className = 'a b';
+			//添加class,如果有这个class就不加，没有就加
+			function addClass(obj,name){
+				var arr = obj.className.split(' ');
+				//console.log(arr)
+				for(var i=0;i<arr.length;i++){
+					if(arr[i]==name){
+						return;
+					}
+				}
+				obj.className += ' '+name;
+			}
+			addClass(lis[2],'d');
+			//删除class,找有没有这个class，没有不删，有就删
+			function removeClass(obj,name){
+				var arr = obj.className.split(' ');
+				var arr1 = [];
+				for(var i=0;i<arr.length;i++){
+					if(arr[i]!=name){
+						arr1.push(arr[i]);
+					}
+				}
+				obj.className = arr1.join(' ');
+				console.log(arr1)
+			}
+			removeClass(lis[2],'c')
+		</script>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var data = [
+				{
+					id:1,
+					name:'小红',
+					sex:'女',
+					age:18,
+					marry:false
+				},
+				{
+					id:4,
+					name:'小白',
+					sex:'男',
+					age:20,
+					marry:false
+				},
+				{
+					id:3,
+					name:'小强',
+					sex:'男',
+					age:40,
+					marry:true
+				},
+				{
+					id:2,
+					name:'小兰',
+					sex:'女',
+					age:23,
+					marry:true
+				}
+			];
+			/*
+			 * 封函数返回下面想要的结果
+			 	1.找到所有女性
+			 	2.按年龄从小到大排序的数据
+			 	3.年龄小于30岁未婚男性
+			 	4.是否都结婚了
+			 * 
+			 * */
+			function getGirl(data){
+				var arr = data.filter(function(a){
+					return a.sex == '女';
+				})
+				return arr;
+			}
+			//console.log(getGirl(data))
+			
+			function sort(data){
+				var arr = [];
+				for(var k in data){
+					arr[k] = data[k];
+				}
+				//console.log(arr)
+				arr.sort(function(a,b){
+					return a.age - b.age;
+				})
+				return arr;
+			}
+			//console.log(sort(data))
+			//console.log(data)
+			
+			function getBoy(data){
+				var arr = data.filter(function(a){
+					return a.sex == '男' && a.age <30 && !a.marry;
+				})
+				return arr;
+			}
+			//console.log(getBoy(data))
+			
+			function marry(data){
+				var b = data.every(function(a){
+					return a.marry
+				})
+				return b;
+			}
+			console.log(marry(data))
+		</script>
+	</body>
+</html>

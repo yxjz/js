@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin:0;
+			}
+			a{
+				text-decoration: none;
+				color:#000;
+			}
+			#wrap{
+				width: 800px;
+				height: 450px;
+				border:5px solid #000;
+				margin:50px auto 0;
+				position: relative;
+			}
+			#prev{
+				position: absolute;
+				top:200px;
+				left:-80px;
+				font-size: 50px;
+				font-weight: bold;
+			}
+			#next{
+				position: absolute;
+				top:200px;
+				right:-80px;
+				font-size: 50px;
+				font-weight: bold;
+			}
+			#btns{
+				width: 400px;
+				height: 100px;
+				background: pink;
+				position: absolute;
+				bottom: -120px;
+				left:50%;
+				margin-left:-200px;
+			}
+			#btns a{
+				float: left;
+				width: 50px;
+				height: 50px;
+				background: yellow;
+				margin:20px 20px;
+				border-radius:50% ;
+			}
+			#btns a.active{
+				background: red;
+			}
+			#pic{
+				width: 800px;
+				height: 450px;
+				position: relative;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<a href="javascript:;" id="prev"><</a>
+			<a href="javascript:;" id="next">></a>
+			<div id="btns">
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</div>
+			<div id="pic">
+				
+			</div>
+		</div>
+		<script src="move.js"></script>
+		<script>
+			var pic = document.getElementById('pic');
+			var prev = document.getElementById('prev');
+			var next = document.getElementById('next');
+			var btns = document.getElementById('btns').getElementsByTagName('a');
+			var arr = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg'];
+			//控制图片切换
+			var n = 0;
+			//控制模式
+			var m = -1;
+			//-1代表默认模式，索引是0开始的，-1小于0
+			var prev = null;
+			//初始化
+			pic.style.backgroundImage = 'url('+arr[n]+')';
+			/*
+			 	1.下雨
+			 		运动前
+			 			生成20个div，定位到上方
+			 		运动
+			 			逐个延迟运动
+			 		运动后
+			 			Pic的背景图变成当前图片
+			 * 
+			 * */
+			next.onclick = function(){
+				n++;
+				if(n>arr.length-1){
+					n = 0;
+				}
+				//根据m选择对应模式，执行不同的函数，看到的效果就不同了
+				if(m == 0){
+					rain();
+				}else if(m == 1){
+					cross();
+				}else{
+					mr();
+				}
+			}
+			for(var i=0;i<btns.length;i++){
+				btns[i].index = i;
+				btns[i].onclick = function(){
+					//如果m等于当前，证明刚才点的也是这个，就执行取消
+					if(this.index == m){
+						m = -1;
+						this.className = '';
+					}else{
+						//如果m不等于当前，就清除上一个，设置当前
+						m = this.index;
+						if(prev){
+							prev.className = '';
+						}
+						this.className = 'active';
+					}
+					prev = this;
+				}
+			}
+			//下雨效果
+			function rain(){
+				var str = '';
+				for(var i=0;i<20;i++){
+					str += '<div style="position:absolute;top:-450px;left:'+i*40+'px;width:40px;height:450px;background:url('+arr[n]+') '+(-i*40)+'px 0px"></div>';
+				}
+				pic.innerHTML = str;
+				var divs = pic.getElementsByTagName('div');
+				for(var i=0;i<divs.length;i++){
+					//定时器传参i，就可以在回调函数里找到最后一个了
+					setTimeout(function(i){
+						//console.log(i)
+						move(divs[i],{top:0},500,'linear',function(){
+							//console.log(i)
+							if(i==divs.length-1){
+								pic.style.backgroundImage = 'url('+arr[n]+')';
+							}
+						})
+					},i*100,i);
+				}
+			}
+			//交叉效果
+			function cross(){
+				var str = '';
+				for(var i=0;i<10;i++){
+					if(i%2){
+						str += '<div style="position:absolute;top:'+i*45+'px;left:-800px;width:800px;height:45px;background:url('+arr[n]+') 0px '+-i*45+'px"></div>';
+				}else{
+						str += '<div style="position:absolute;top:'+i*45+'px;left:800px;width:800px;height:45px;background:url('+arr[n]+') 0px '+-i*45+'px"></div>';
+					}
+				}	
+				pic.innerHTML = str;
+				var divs = pic.getElementsByTagName('div');
+				for(var i=0;i<divs.length;i++){
+					fn(i);
+				}
+				//运动结束后需要判断最后一个运动完切换背景图，所以要知道是div的最后一个的回调函数，可以用函数形参z存一下，这样在回调函数里就能找到了
+				function fn(z){
+					move(divs[z],{left:0},800,'linear',function(){
+						//console.log(n)
+						if(z == divs.length-1){
+							pic.style.backgroundImage = 'url('+arr[n]+')';
+						}
+					})
+				}
+			}
+			//默认,直接切换背景图
+			function mr(){
+				pic.innerHTML = '';
+				pic.style.backgroundImage = 'url('+arr[n]+')';
+			}
+		</script>
+	</body>
+</html>

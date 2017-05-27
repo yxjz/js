@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮"/>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			/*
+			 	for(初始化变量;判断条件;条件改变){
+			 		要循环执行的代码
+			 	}
+			 	
+			 	1.初始化变量
+			 	2.判断条件，当判断条件为真，才执行下边代码，决定了循环执行次数
+			 	3.执行代码
+			 	4.条件改变
+			 	5.判断条件，执行，改变
+			 	
+			 	初始化变量->判断条件->执行->条件改变->判断条件->执行...
+			 	
+			 	注意：
+			 		1.初始化只执行了一次
+			 		2.判断条件决定了循环是否执行，决定了执行次数
+			 		3.每次一定要有条件改变！！！不然就会无限循环，死循环
+
+			 * 
+			 * */
+			var btn = document.getElementsByTagName('input')[0];
+			var lis = document.getElementsByTagName('li');
+			btn.onclick = function(){
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.background = 'red';
+				}
+			}
+		</script>
+	</body>
+</html>

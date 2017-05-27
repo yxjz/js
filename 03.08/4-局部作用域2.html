@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	局部作用域
+			 		在函数内声明的变量和函数，只能在该函数内使用，如果外部想用，return出去
+			 * 
+			 * */
+			function fn(){
+				//函数内声明的变量
+				var a = 1;
+				//函数内声明的函数
+				function fn1(){
+					var b = 2;
+					alert(2)
+					function fn3(){
+						alert(3)
+					}
+					return fn3
+				}
+				//console.log(a)//该函数内部可以访问
+				//fn1();//该函数内部可以访问
+				function fn2(){
+					console.log(a)
+					console.log(fn1()())
+				}
+				fn2();
+			}
+			fn();
+			
+		</script>
+	</body>
+</html>

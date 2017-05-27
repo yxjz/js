@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	作用域链
+			 		变量和函数的查找原则
+			 		函数内部 -> 形参 -> 外部
+			 * */
+			var a = 1;
+			function fn(a){
+				//var a = 2;
+				
+				function fn1(){
+					console.log(a)
+				}
+				fn1();
+				function fn3(a){}
+			}
+			fn()
+		</script>
+	</body>
+</html>

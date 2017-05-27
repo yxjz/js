@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="1.jpg" alt="" />
+		<script>
+			/*
+			 	UI事件
+			 		和浏览器相关
+			 		load,scroll,resize
+			 * */
+			/*
+			 	onload
+			 		文档，图片加载完执行事件
+			 * 
+			 * */
+			window.onload = function(){
+				
+			}
+			var img = document.getElementsByTagName('img')[0];
+			img.onload = function(){
+				console.log(1)
+			}
+		</script>
+	</body>
+</html>

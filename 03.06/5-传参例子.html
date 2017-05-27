@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.active{
+				background: red;
+			}
+			.box{
+				width: 300px;
+				height: 150px;
+				border: 1px solid #000;
+				position: relative;
+			}
+			.box div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				bottom: 0;
+				left:0;
+				display: none;
+			}
+			.box .show{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<input type="button" value="按钮1" class="active"/>
+			<input type="button" value="按钮2"/>
+			<input type="button" value="按钮3"/>
+			<div class="show">1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+		<div class="box">
+			<input type="button" value="按钮1" class="active"/>
+			<input type="button" value="按钮2"/>
+			<input type="button" value="按钮3"/>
+			<div class="show">1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+		<div class="box">
+			<input type="button" value="按钮1" class="active"/>
+			<input type="button" value="按钮2"/>
+			<input type="button" value="按钮3"/>
+			<div class="show">1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+		<script>
+			//结构相同，功能相同，用函数传参
+			//先写好一个，改成传参的形式
+			var boxs = document.getElementsByClassName('box');
+			for(var i=0;i<boxs.length;i++){
+				fn(i);
+			}
+			function fn(n){
+				var btns = boxs[n].getElementsByTagName('input');
+				var divs = boxs[n].getElementsByTagName('div');
+				for(var i=0;i<btns.length;i++){
+					btns[i].index = i;
+					btns[i].onclick = function(){
+						for(var i=0;i<btns.length;i++){
+							btns[i].className = '';
+							divs[i].className = '';
+						}
+						this.className = 'active';
+						divs[this.index].className = 'show';	
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

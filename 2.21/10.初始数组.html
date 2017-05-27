@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	数组
+				 	arr = []
+				 	作用：存储多个数据
+				 	特性：有序性，多个数据间用逗号分隔
+				 	取值：数字下标arr[0],从0开始,最后一位length-1
+				 	数据个数：arr.length
+			 * 
+			 * */
+			var arr = ['你好',1,true,function(){
+				alert(1)
+			}];
+			console.log(arr[0])
+			console.log(arr.length)
+			arr[arr.length-1]()
+			console.dir(arr[arr.length-1])
+		</script>
+	</body>
+</html>

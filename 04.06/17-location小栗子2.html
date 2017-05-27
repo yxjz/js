@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ol{
+				margin:0;
+				padding:0;
+				list-style: none;
+			}
+			ol li{
+				float: left;
+				width: 50px;
+				height: 50px;
+				border: 1px solid #000;
+				margin-right:10px;
+				line-height: 50px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<!--5.a标签设置search-->
+		<a href="16-location小栗子.html?t=lm">联盟</a>
+		<a href="16-location小栗子.html?t=bl">部落</a>
+		<ul id="list"></ul>
+		<ol id="pages">
+		</ol>
+		<script>
+			var data = {
+				lm:[
+					{
+						name:'暴风城1'
+					},
+					{
+						name:'铁炉堡1'
+					},
+					{
+						name:'圣骑士1'
+					},
+					{
+						name:'暗夜精灵1'
+					},
+					{
+						name:'暴风城1'
+					},
+					{
+						name:'铁炉堡2'
+					},
+					{
+						name:'圣骑士2'
+					},
+					{
+						name:'暗夜精灵2'
+					},
+					{
+						name:'暴风城2'
+					},
+					{
+						name:'铁炉堡2'
+					},
+					{
+						name:'圣骑士3'
+					},
+					{
+						name:'暗夜精灵3'
+					}
+				],
+				bl:[
+					{
+						name:'奥格瑞玛1'
+					},
+					{
+						name:'雷霆崖1'
+					},
+					{
+						name:'洛丹伦1'
+					},
+					{
+						name:'幽暗城1'
+					},
+					{
+						name:'萨满1'
+					},
+					{
+						name:'奥格瑞玛2'
+					},
+					{
+						name:'雷霆崖2'
+					},
+					{
+						name:'洛丹伦2'
+					},
+					{
+						name:'幽暗城2'
+					},
+					{
+						name:'萨满2'
+					},
+					{
+						name:'奥格瑞玛3'
+					},
+					{
+						name:'雷霆崖3'
+					},
+					{
+						name:'洛丹伦3'
+					},
+					{
+						name:'幽暗城3'
+					},
+					{
+						name:'萨满3'
+					},
+					{
+						name:'奥格瑞玛4'
+					},
+					{
+						name:'雷霆崖4'
+					},
+					{
+						name:'洛丹伦4'
+					},
+					{
+						name:'幽暗城4'
+					},
+					{
+						name:'萨满4'
+					}
+				]
+			};
+			/*
+			 	1.获取search,hash并处理	
+			 *      a.第一次打开页面,没有search和hash,默认为lm，第一页
+			 *      b.设置了search或hash
+			 * 			search可以放在全局
+			 * 			hash要放在onhashchange
+			 * 			拿到search和hash的信息，渲染对应的内容和对应的页码
+			 *  2.根据处理好的search拿到对应的数据
+			 *  3.渲染页面
+			 * 		根据页码，一页几个
+			 *  4.页码
+			 * 		a.计算有几页
+			 * 		b.渲染到页面
+			 *      c.页码点击设置hash
+			 * 		d.onhashchange渲染对应页码的内容
+			 *  5.a标签
+			 * 		设置search
+			 * 		
+			 * */
+			var list = document.getElementById('list');
+			var pages = document.getElementById('pages');
+			var ps = pages.getElementsByTagName('li');
+			//一页几条数据
+			var len = 5;
+			//有几页，需要计算
+			var page = 0;
+			//存放当前页数据的
+			var Data = [];
+			var search = location.search;
+			var hash = location.hash;
+			//1.获取search，hash并处理
+			//a.search有就按获取到的处理结果，没有就默认lm
+			var t = search?search.substring(1).split('=')[1]:'lm';
+			//b.hash有就按获取到的处理结果，没有就默认1
+			var h = hash?hash.substring(1).split('=')[1]:1;
+			//2.根据search值，拿到对应的数据
+			Data = data[t];
+			//3.渲染页面
+			createLi();
+			//4.分页
+			//4.a计算生成几页
+			//数据总个数/一个几个 = 多少页
+			page =  Math.ceil(Data.length/len);
+			//4.b渲染页码
+			str = '';
+			for(var i=0;i<page;i++){
+				str += '<li>'+(i+1)+'</li>';
+			}
+			pages.innerHTML = str;
+			//4.c点击页码设置hash
+			for(var i=0;i<ps.length;i++){
+				ps[i].onclick = function(){
+					location.hash = 'p='+this.innerHTML;
+				}
+			}
+			//4.d onhashchange根据当前hash渲染内容
+			window.onhashchange = function(){
+				//先获取到当前的hash
+				h = location.hash.substring(1).split('=')[1];
+				//渲染页面
+				createLi();
+			}
+			//渲染页面函数
+			function createLi(){
+				var start = (h-1)*len;
+				var end = start+len;
+				if(end>Data.length-1){
+					end = Data.length;
+				}
+				var str = '';
+				for(var i=start;i<end;i++){	
+					str += '<li>'+Data[i].name+'</li>';
+				}
+				list.innerHTML = str;
+			}
+		</script>
+	</body>
+</html>

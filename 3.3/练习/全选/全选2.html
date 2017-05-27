@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+ul , p { width:300px; padding:0; margin:0; margin:0 auto; }
+p { padding-top:20px; }
+li { list-style:none; border-bottom:1px solid #333; height:30px; line-height:30px; }
+.yellow{
+	background-color: yellow;
+}
+.red{
+	background-color: red;
+}
+.hover{
+	background-color: black;
+	color: #fff;
+}
+.checked{
+	background-color: green;
+}
+
+</style>
+</head>
+
+<body>
+
+<ul>
+	<li><input type="checkbox" />信乐团 - 海阔天空</li>
+	<li><input type="checkbox" />五月天 - 倔强</li>
+	<li><input type="checkbox" />薛之谦 - 演员</li>
+	<li><input type="checkbox" />杨宗纬 - 一次就好</li>
+	<li><input type="checkbox" />周杰伦 - 安静</li>
+</ul>
+<p><input type="checkbox" id="all"/> 全选</p>
+
+<script>
+	//eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('3 a=p.v(\'s\');3 b=p.i(\'w\')[0];3 c=b.i(\'x\');3 d=b.i(\'y\');j(3 e=0;e<d.m;e++){7(e%2){d[e].6=\'A\'}l{d[e].6=\'z\'};d[e].o=d[e].6;d[e].t=5(){1.6=\'u\'};d[e].D=5(){1.6=1.o};c[e].k=e;c[e].n=5(){7(1.4){d[1.k].9.8=\'r\'}l{d[1.k].9.8=\'\';};a.4=f(c)}};5 f(g){j(3 h=0;h<g.m;h++){7(!g[h].4){q B}};q C};a.n=5(){j(3 g=0;g<c.m;g++){c[g].4=1.4;7(1.4){d[g].9.8=\'r\'}l{d[g].9.8=\'\'}}}',40,40,'|this||var|checked|function|className|if|background|style|||||||||getElementsByTagName|for|index|else|length|onchange|color|document|return|green|all|onmouseover|hover|getElementById|ul|input|li|red|yellow|false|true|onmouseout'.split('|'),0,{}))
+	/*
+	 	分析：
+	 		1.移入li
+	 			选中
+	 				不变
+	 			未选中
+	 				变黑
+	 		2.移出
+	 			选中
+	 				不用还原
+	 			未选中
+	 				还原
+	 			
+	 		3.点击Input
+	 			选中	
+	 				li变绿
+	 			取消
+	 				变黑
+	 			判断是否全选
+	 				全选
+	 					全选勾
+	 				未全选
+	 					全选勾取消
+	 					
+	 		4.全选
+	 			选中
+	 				全勾，全绿
+	 			取消
+	 				全不勾，还原色
+	 * 
+	 * 
+	 * */
+	var ul = document.getElementsByTagName('ul')[0];
+	var lis = ul.getElementsByTagName('li');
+	var inps = ul.getElementsByTagName('input');
+	var all = document.getElementById('all');
+	//初始化，隔行变色，给5个li变色，重复的事情用for,每隔XX干的事情用%
+	for(var i=0;i<lis.length;i++){
+		if(i%2){
+			lis[i].className = 'yellow';
+		}else{
+			lis[i].className = 'red';
+		}
+		//lis[i].color = lis[i].className;
+	}
+	//li移入移出
+	for(var i=0;i<lis.length;i++){
+		//要找到li对应的input，用索引值
+		lis[i].index = i;
+		lis[i].color = lis[i].className;
+		lis[i].onmouseover = function(){
+			//console.log(inps[this.index].checked)
+			if(!inps[this.index].checked){
+				this.className = 'hover';
+			}
+		}
+		lis[i].onmouseout = function(){
+			//console.log(this.color)
+			if(!inps[this.index].checked){
+				//还原颜色方法1，用自定义属性记录颜色
+				//this.className = this.color;、
+				//方法2，用索引值算颜色
+				if(this.index%2){
+					this.className = 'yellow';
+				}else{
+					this.className = 'red';
+				}
+			}
+		}
+	}
+	//input点击
+	for(var i=0;i<inps.length;i++){
+		inps[i].index = i;
+		inps[i].onclick = function(){
+			if(this.checked){
+				//选中
+				lis[this.index].className = 'checked';
+			}else{
+				//未选中
+				lis[this.index].className = 'hover';
+			}
+			
+			//判断是否全选，看每个input是否被选中
+			
+			
+			
+			/*
+			 	判断全选方法2：
+			 		看每个是否选中，选中就+1，结果是5就证明全选
+			 * */
+			var num = 0;
+			for(var i=0;i<inps.length;i++){
+				//console.log(inps[i].checked);
+				if(inps[i].checked){
+					num++;
+				}	
+			}
+			console.log(num)
+			if(num == inps.length){
+				all.checked = true;
+			}else{
+				all.checked = false;
+			}
+		}
+	}
+	all.onclick = function(){
+		if(this.checked){
+			for(var i=0;i<lis.length;i++){
+				inps[i].checked = true;
+				lis[i].className = 'checked';
+			}
+		}else{
+			for(var i=0;i<lis.length;i++){
+				inps[i].checked = false;
+				lis[i].className = lis[i].color;
+			}
+		}
+	}
+</script>
+
+</body>
+</html>

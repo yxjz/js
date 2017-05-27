@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				padding:100px;
+				border: 1px solid #000;
+				perspective: 800px;
+			}
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				transition: 3s;
+				transform-style: preserve-3d;
+			}
+			#box:hover #div{
+				/*transform: translateZ(400px);*/
+				/*transform: rotateX(360deg);*/
+				/*transform: rotateY(360deg);*/
+			}
+			span{
+				display: block;
+				width: 100px;
+				height: 100px;
+				background: yellow;
+			}
+			#box:hover #div{
+				transform: rotateY(45deg);
+			}
+			#box:hover span{
+				transform: rotateX(45deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="div">
+				<span></span>
+			</div>
+		</div>
+		<script>
+			/*
+			 	3D
+			 		perspective-景深
+			 		景深加在父级元素上
+			 		
+			 		rotateX() - 旋转
+			 		rotateY()
+			 		
+			 		scaleZ()
+			 		
+			 		translateZ()
+			 		
+			 		transform-style: preserve-3d
+			 		是否保留子元素的变形
+			 * 
+			 * */
+		</script>
+	</body>
+</html>

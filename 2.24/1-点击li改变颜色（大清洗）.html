@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				margin:5px;
+			}
+			.active{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>文字1</li>
+			<li>文字2</li>
+			<li>文字3</li>
+			<li>文字4</li>
+			<li>文字5</li>
+			<li>文字6</li>
+		</ul>
+		<script>
+			var lis = document.getElementsByTagName('li');
+			for(var i=0;i<lis.length;i++){
+				lis[i].onclick = function(){
+					//大清洗，简单粗暴
+					for(var i=0;i<lis.length;i++){
+						lis[i].className = '';
+					}
+					this.className = 'active';
+					console.log(this.innerHTML)
+				}
+			}
+		</script>
+	</body>
+</html>

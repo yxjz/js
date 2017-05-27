@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body style="height:3000px">
+		<script>
+			/*
+			 	onscroll
+			 		滚动条滚动触发的事件,时间间隔触发的，不是1px触发一次
+			 		
+			 	获取滚动距离
+		只能获取不能设置	 		window.pageYOffset/window.pageXOffset
+		设置滚动距离
+		window.scrollTo(x,y)
+		
+		可以获取也可以设置
+		chrome:	 		
+		document.body.scrollTop	
+		其他是0
+		其他:
+		document.documentElement.scrollTop
+		在chrome下可以获取到，但值一直是0
+			 * */
+			window.onscroll = function(){
+				//console.log(window.pageYOffset)
+				console.log(document.body.scrollTop)
+				//console.log(document.documentElement.scrollTop)
+				
+			}
+			document.onclick = function(){
+				document.body.scrollTop	= 1000;
+			}
+		</script>
+	</body>
+</html>

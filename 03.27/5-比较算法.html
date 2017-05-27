@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr1 = [1,2,5,8,7,6,4,3];
+			var arr2 = [1,2,5,8,7,6,4,3];
+			var arr3 = [1,2,5,8,7,6,4,3];
+			function quickSort(arr){
+				if(arr.length<=1){
+					return arr;
+				}
+				var c = arr.shift();
+				var left = [];
+				var right = [];
+				while(arr.length){
+					if(c<arr[0]){
+						right.push(arr.shift())
+					}
+					if(c>arr[0]){
+						left.push(arr.shift())
+					}
+				}
+				return quickSort(left).concat(c,quickSort(right))
+			}
+			function bubbleSort(arr){
+				for(var i=0;i<arr.length-1;i++){
+					var onOff = true;
+					for(var j=0;j<arr.length-1-i;j++){
+						var a = arr[j];
+						var b = arr[j+1];
+						if(arr[j]>arr[j+1]){
+							arr[j] = b;
+							arr[j+1] = a;
+							onOff = false;
+						}
+					}
+					if(onOff){
+						break;
+					}
+				}
+				return arr;
+			}
+			console.time('冒泡');
+			bubbleSort(arr1);
+			console.timeEnd('冒泡');
+			console.time('快速');
+			quickSort(arr2);
+			console.timeEnd('快速');
+			console.time('原生');
+			arr3.sort(function(a,b){
+				return a-b;
+			})
+			console.timeEnd('原生');
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: url(1.jpg) no-repeat;
+				margin:100px auto;
+				background-size:cover ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script src="Mtween2.js"></script>
+		<script>
+			(function(){
+				var w = screen.width;
+				var targetW = 320;
+				var scale = w/targetW;
+				var meta = document.createElement('meta');
+				meta.name = 'viewport';
+				meta.content = 'user-scalable=no,width=device-width,initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale;
+				document.head.appendChild(meta);
+				document.addEventListener('touchstart',function(ev){
+					ev.preventDefault();
+				})
+				
+				var box = document.getElementById('box');
+				var scale = 0;
+				var rotate = 0;
+				box.addEventListener('gesturestart',function(){
+					scale = css(this,'scale')
+					rotate = css(this,'rotate')
+				})
+				
+				box.addEventListener('gesturechange',function(ev){
+					css(this,'scale',scale*ev.scale)
+					css(this,'rotate',rotate+ev.rotation)
+				})
+	
+			})()
+			
+		</script>	
+	</body>
+</html>

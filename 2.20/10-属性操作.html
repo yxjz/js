@@ -1,0 +1,29 @@
+6<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn" style="width:100px;height:100px;background: red;left:0;top:1px;"/>
+		<script>
+			/*
+			 	属性操作
+			 		操作的是行间属性，可读可写
+			 		
+			 	.的方法
+			 		不合符小驼峰命名的属性，样式名，需要转成小驼峰
+			 		
+			 	[]的方法
+			 		css样式名必须加引号
+			 		变量必须用[]	
+			 * 
+			 * */
+			var btn = document.getElementById('btn');
+			var pos = 'top';
+//			console.log(btn.style.backgroundColor)
+			console.log(btn.style['background-color'])
+			console.log(btn.style[pos])
+		</script>
+	</body>
+</html>

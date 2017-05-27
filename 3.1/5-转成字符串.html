@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			/*
+			 	转成字符串
+			 		String()
+			 		''+数据
+			 * 
+			 * */
+			//1.数字
+			var n = 1;
+			console.log(String(n))
+			console.log(1)
+			//2.布尔值
+			var b = true;
+			console.log(String(b))
+			//3.null
+			var Null = null;
+			console.log(String(Null))
+			//4.undefined
+			var a;
+			console.log(String(a))
+			//object
+			var arr = [1,2,3];
+			console.log(String(arr))
+			var obj = {
+				name:'小红',
+				age:18
+			}
+			console.log(String(obj))
+			var box = document.getElementById('box');
+			console.log(String(box))
+			console.log(''+n)
+		</script>
+	</body>
+</html>

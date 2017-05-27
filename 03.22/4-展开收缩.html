@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p{
+				margin:0;
+				border:1px solid #000;
+				width:200px;
+			}
+		</style>
+	</head>
+	<body>
+		<p></p><a href="javascript:;">展开</a>
+		<script>
+			var str = '开始这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字结束';
+			var p = document.getElementsByTagName('p')[0];
+			var a = document.getElementsByTagName('a')[0];
+			a.onOff = true;
+			a.onclick = function(){
+				if(this.onOff){
+					p.innerHTML = str;
+					this.innerHTML = '收缩';
+				}else{
+					p.innerHTML = str.substring(0,20)+'...';
+					this.innerHTML = '展开';
+				}
+				this.onOff = !this.onOff;
+			}
+			
+			if(str.length>20){
+				p.innerHTML = str.substring(0,20)+'...';	
+			}else{
+				p.innerHTML = str;
+			}
+		</script>
+	</body>
+</html>

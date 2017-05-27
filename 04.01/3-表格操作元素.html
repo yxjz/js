@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table{
+				border-collapse: collapse;
+			}
+			td{
+				padding:0;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1" id="table">
+			
+		</table>
+		<script>
+			/*
+			 	table元素节点下的属性
+					创建插入，
+						createTHead()-创建插入表头
+						createTBody()- 创建插入表身
+						createTFoot()-创建插入表尾
+						deleteTHead()-删除表头
+						deleteTFoot()-删除表尾
+						insertRow([pos])-创建插入行，不写参数插入到最后，写参数，number,插入某位前边
+						pos:位置
+						insertCell([pos])
+						-创建插入列，不写参数插入到最后，写参数，number,插入某位前边
+						pos:位置
+						deleteRow([pos])-删除行
+						deleteCell([pos])-删除列
+						
+			 * */
+			var table = document.getElementById('table');
+			var tHead = table.createTHead();
+			var tBody = table.createTBody();
+			var tFoot = table.createTFoot();
+			/*table.deleteTHead()
+			table.deleteTHead()*/
+			var tr1 = tBody.insertRow();
+			tr1.innerHTML = 1;
+			var tr2 = tBody.insertRow();
+			tr2.innerHTML = 2;
+			tr1.insertCell().innerHTML = 3;
+//			tr1.deleteCell(0)
+			console.dir(table)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			/*
+			 	重复型定时器
+			 		setInterval(函数,间隔时间)
+			 		会执行多次，直到关闭
+			 * */
+			var btn = document.getElementById('btn');
+			var timer = null;
+			var a = 1000;
+//			timer = setInterval(function(){
+//				console.log(1)
+//			},1000)
+			btn.onclick = function(){
+				clearInterval(timer)
+			}
+			function fn(){
+				console.log(1)
+			}
+			timer = setInterval(function(){
+				fn()
+			},1000)
+		</script>
+	</body>
+</html>

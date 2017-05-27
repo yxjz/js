@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li><span>1</span></li>
+			<li><span>2</span></li>
+			<li><span>3</span></li>
+			<li><span>4</span></li>
+		</ul>
+		<script>
+			/*
+			 	事件委托
+			 * 		事件源的应用，内存性能优化
+			 * */
+//			var lis = document.getElementsByTagName('li');
+//			for(var i=0;i<lis.length;i++){
+//				lis[i].onclick = function(){
+//					this.style.background = 'red';
+//				}
+//			}
+			var ul = document.getElementsByTagName('ul')[0];
+			ul.onclick = function(ev){
+				console.log(ev.target.nodeName)
+				ev.target.style.background = 'red';
+			}
+		</script>
+	</body>
+</html>

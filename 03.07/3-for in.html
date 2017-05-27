@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	for in
+			 		循环、遍历对象
+			 * 	for(var key in Obj){
+			 * 	
+			 *  }
+			 * 参数：
+				  key:随便起名，在循环里代表属性名
+				  Obj:要循环的对象
+				  
+				  由于key是变量，Obj[key]取值，不能用Obj.key
+				  attr
+			 * */
+			var j1 = {
+				a:1,
+				b:2,
+				c:{
+					name:'小白'
+				}
+			}
+			var j2 = {};
+			for(var key in j1){
+				//console.log(key)
+				//console.log(j[key])
+				if(key=='c'){
+					j2[key] = j1[key]	
+				}
+			}
+			var arr = [1,2,3];
+			for(var key in arr){
+				console.log(key)
+				//console.log(arr[key])
+			}
+			//console.log(j2,j1)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	全局作用域
+			 		直接在script下声明的变量和函数，全局都可以访问
+			 * */
+			//全局变量
+			var a = 1;
+			//全局函数
+			function fn(){
+				alert(2);
+			}
+			//全局访问变量
+			//console.log(a)//全局可以访问
+			//fn();//全局可以访问
+			
+			function fn1(){
+				console.log(a)//函数内部可以访问
+				fn();//函数内部可以访问
+			}
+			fn1();
+		</script>
+	</body>
+</html>

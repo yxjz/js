@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="8-test.html">百度</a>
+		<input type="button" value="前进" id="btn"/>
+		<script>
+			/*
+			 	history
+			 		自身窗口，只要地址栏改变了，就会产生一条历史记录，可供前进后退
+			 		历史记录对象
+			 		length:几条记录
+			 		go(0):跳到第几条记录，扩号里的数字代表第几个记录，number
+			 		back()后退
+			 		forward()前进
+			 * 
+			 * */
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				//console.log(history)
+				//history.go()
+				//history.back();
+				history.forward()
+			}
+			
+		</script>
+	</body>
+</html>

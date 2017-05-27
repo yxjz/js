@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li class="abc">3
+				<div class="b"></div>			
+			</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<ul>
+			<li>22</li>
+			<li>33</li>
+			<li>44</li>
+			<li>55</li>
+			<li>66</li>
+			<li>77</li>
+		</ul>
+		<script>
+			/*
+			 	删除节点
+			 		parentNode.removeChild(子节点)
+			 	替换节点
+			 		parentNode.replaceChild(新节点,要替换的节点)
+			 	克隆节点
+			 		node.cloneNode(true)
+			 		只能克隆结构，自定义属性和绑定的事件不会克隆
+			 		参数：
+			 			true：深度克隆,包含子节点
+			 			false:浅克隆，默认是false,只克隆自身的节点，不包含子节点
+			 * */
+			var ul = document.getElementsByTagName('ul')[0];
+			var ul2 = document.getElementsByTagName('ul')[1];
+			var lis = ul.getElementsByTagName('li');
+			var lis2 = ul2.getElementsByTagName('li');
+			//ul.removeChild(lis[0])
+			//ul.replaceChild(lis[0],lis[1])
+			//ul.replaceChild(lis2[0],lis[0])
+			lis[2].abc = 1;
+			lis[2].onclick = function(){
+				
+			}
+			var li = lis[2].cloneNode(true);
+			console.log(li.onclick)
+		</script>
+	</body>
+</html>

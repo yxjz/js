@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--<div id="div1"></div>-->
+		<script>
+			/*
+			 * 标签名和class获取元素是动态的
+			 * 注意：获取时加数字下标就不是动态啦
+			*/
+			var div = document.getElementsByTagName('div');
+			/*console.log(div)
+			document.body.innerHTML = '<div></div>';
+			console.log(div)*/
+
+			//id是静态获取，所以两个都是null
+			var div1 = document.getElementById('div1');
+			console.log(div1);
+			document.body.innerHTML = '<div id="div1"></div>';
+			console.log(div1);
+		</script>
+	</body>
+</html>

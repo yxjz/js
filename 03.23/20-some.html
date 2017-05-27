@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 		array.some(function(a,b,c){
+			 			return 条件
+			 		})
+			 		a:值
+				 	b:index
+				 	c:arr
+				 	
+				 	返回值：
+				 		只要有一个return的结果是true，才返回true，全是false,才返回false
+			 * 			
+			 * */
+			var arr = [1,2,3,4,5];
+			console.log(arr.some(function(a,b,c){
+				return a>4;
+			}))
+		</script>
+	</body>
+</html>

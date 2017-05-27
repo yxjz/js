@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	快速算法
+			 		数组从小到大排序
+			 		
+	left = []  c = 1  right = [2,5,8,7,6,4,3]
+			 		
+	left = [] c = 2 right = [5,8,7,6,4,3]
+			 		
+	left = [4,3] c = 5 right = [8,7,6]	 		
+			
+	left = [3] c = 4 right = []	
+	
+	left = [7,6] c = 8 right = []
+	
+	left = [6] c = 7 right = []
+			 * */
+			var arr = [1,2,5,8,7,6,4,3];
+			function quickSort(arr){
+				//如果是[]，或者数组里只有1位，不需要比较，直接返回
+				if(arr.length<=1){
+					return arr;
+				}
+				//切出数组第一位，当目标值
+				var c = arr.shift();
+				var left = [];
+				var right = [];
+				//如果数组都切完了，length=0，终止循环
+				while(arr.length){
+					//比c大的，切出来放right
+					if(c<arr[0]){
+						right.push(arr.shift())
+					}
+					//比c小的，切出来放left
+					if(c>arr[0]){
+						left.push(arr.shift())
+					}
+				}
+				//left,right递归继续切，最终用concat连接起来
+				return quickSort(left).concat(c,quickSort(right))
+			}
+			console.log(quickSort(arr))
+		</script>
+	</body>
+</html>

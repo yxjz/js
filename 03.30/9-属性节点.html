@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div" class="a"></div>
+		<p></p>
+		<script>
+			/*
+			 	属性节点
+			 		nodeType   2
+			 		nodeName  属性名字符串，小写
+			 		nodeValue 属性值字符串，小写
+			 * 
+			 * */
+			var div = document.getElementById('div');
+			//console.log(div.attributes[0].nodeType)
+			//console.log(div.attributes[0].nodeName)
+			//console.log(div.attributes[0].nodeValue)
+			console.dir(div.attributes[0])
+		</script>
+	</body>
+</html>

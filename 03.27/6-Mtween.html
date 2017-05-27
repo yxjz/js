@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script src="Mtween.js"></script>
+		<script>
+			var div = document.getElementById('div');
+			Mtween({
+				el:div,
+				target:{
+					left:800
+				},
+				time:3000,
+				fx:'easeOut',
+				callIn:function(){
+					var color = ['yellow','blue','green','red'];
+					color.sort(function(){
+						return Math.random()-0.5;
+					})
+					div.style.background = color[0];
+				},
+				callBack:function(){
+					Mtween({
+						el:div,
+						target:{
+							top:400
+						},
+						time:3000
+					})
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				padding:100px;
+				border: 1px solid #000;
+				perspective: 800px;
+			}
+			#div{
+				width: 100px;
+				height: 100px;
+				position: relative;
+				transform-style: preserve-3d;
+				transition: 10s;
+				
+			}
+			span{
+				display: block;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left:0;
+				top:0;
+				transform-style: preserve-3d;
+			}
+			em{
+				display: block;
+				width: 100px;
+				height: 100px;
+				font-style:normal;
+				line-height: 100px;
+				text-align: center;
+				font-size:50px;
+				transform: translateZ(20px);
+				backface-visibility: hidden;
+			}
+			#div span:nth-of-type(1){
+				background: red;
+				transform: rotateY(0deg);
+			}
+			#div span:nth-of-type(2){
+				background: green;
+				transform: rotateY(180deg);
+			}
+			#box:hover #div{
+				transform: rotateY(360deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="div">
+				<span><em>正</em></span>
+				<span><em>反</em></span>
+			</div>
+		</div>
+	</body>
+</html>

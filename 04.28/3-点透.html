@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top:0;
+				left:0;
+			}
+			#box2{
+				width: 200px;
+				height: 200px;
+				background: blue;
+				position: absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<a href="http://www.baidu.com">百度</a>-->
+		<div id="box2"></div>
+		<div id="box"></div>
+		<script>
+			(function(){
+				var w = screen.width;
+				var targetW = 320;
+				var scale = w/targetW;
+				var meta = document.createElement('meta');
+				meta.name = 'viewport';
+				meta.content = 'user-scalable=no,width=device-width,initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale;
+				document.head.appendChild(meta);
+//			document.body.innerHTML = innerWidth
+			/*
+			 	事件点透
+			 		点上层元素，上层元素消失或隐藏，下层元素有焦点特性或者click,300ms后触发下层元素的事件
+			 		解决方法：
+			 		1.如果上层要消失的话，下层不放焦点特性标签
+			 		2.不用pc事件
+			 		3.阻止默认行为
+			 * 
+			 * */
+				var box = document.getElementById('box');
+				var box2 = document.getElementById('box2');
+				box.addEventListener('touchend',function(){
+				this.style.display = 'none';
+				})
+				box2.addEventListener('touchend',function(){
+					this.style.background = 'yellow';
+				})
+//				document.addEventListener('touchstart',function(ev){
+//					ev.preventDefault();
+//				})
+				
+			})()
+			
+		</script>
+	</body>
+</html>

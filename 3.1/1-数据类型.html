@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			/*
+			 	数据类型
+			 		简单类型，基本类型
+				 		1.String,字符串
+				 		单双引号都可以，必须成对出现
+				 		用引号引起来的0个或者多个字符Unicode码
+				 		2.Number，数字
+				 			整数或者浮点数
+				 		3.Boolean，布尔值
+				 			true,false
+				 		4.Null,空
+				 		只有一个值：null
+				 			a.不知道存什么类型的数据，暂时先定义为null
+				 			b.要存对象类型，暂时没赋值，先赋值为null
+				 			c.清除
+				 		5.Undefined,未定义
+				 		只有一个值：undefined
+				 		声明变量未赋值，默认值是undefined
+				 		
+				 	复杂类型
+				 		由简单类型和复杂类型组成
+				 		object,对象类型
+				 		[],{}
+				 		键值对{},多个键值对用逗号分隔
+				 		{
+				 			属性:值,
+				 			属性:值
+				 		}
+			 * 
+			 * */
+			//1.字符串
+			var btn = document.getElementById('btn');
+			//右边赋值
+			btn.style.background = 'red';
+			//btn.style.width = 0;
+			//btn.style['height'] = '100px';
+			//2.数字
+			//var n = 1.0;
+			//Number.toFixed(数字)
+			//参数：保留几位小数
+			var n = 0.625871.toFixed(2);//保留2位
+			console.log(n)    //----->0.63
+			//4.null,清除数据
+			//btn = null;
+			console.log(null==undefined)    //----->true
+			btn.onclick = function(){
+				alert(1);
+			}
+			//on绑定的事件函数解绑用null
+			btn.onclick = null;
+			
+			var a;
+			console.log(a);    //----->undefined
+			//console.log(b)   //报错
+			function fn(){
+				var c = 1;
+				console.log(c)   //----->1
+			}
+			fn();
+			//console.log(c)   //报错
+			//常见错误，className,onclick,style of undefined,肯定是前边获取的元素有问题
+			// not defined,肯定是没声明这个变量
+//			a.onclick = function(){
+//				
+//			};
+			
+			console.log(btn.index);   //---->undefined
+			
+			var arr = ['1',1,true,null,undefined,[1,2,3]]
+			var obj = {
+				//键值对
+				name : '小丽',
+				age:18,
+				sex:'女',
+				po:false,
+				friends:[
+					{
+						name:'小红',
+						age:16
+					},
+					{
+						name:'小明',
+						age:14
+					}
+				]
+			};
+			console.log(obj.name)
+			
+			var info = [
+				{
+					name:'小红',
+					age:18
+				},
+				{
+					name:'小强',
+					age:20
+				}
+			]
+		</script>
+	</body>
+</html>

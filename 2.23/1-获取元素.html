@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			/*
+			 	css获取元素
+				 	id选择器  #
+				 	class    .
+				 	标签       div
+				 	
+				js获取元素
+				 	通过id
+ 		document.getElementById('id名')
+ 					通过标签名
+ 		document.getElementsByTagName('标签名')
+ 		元素.getElementsByTagName('标签名')
+ 		document和元素限制获取范围，在该范围内通过标签名获取一组元素，类数组，数字下标取值[0]，从0开始,length
+ 		
+ 		注意：只有一个元素，也必须加数字下标[0]，才能操作该元素				 
+				 	
+			 * */
+			var ul = document.getElementsByTagName('ul');
+			var lis = ul[0].getElementsByTagName('li');
+			//console.log(ul,ul.length)
+			ul[0].style.background = 'red';
+			console.log(lis,lis.length)
+			lis[0].style.background = 'blue';
+			lis[1].style.background = 'yellow';
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="button" value="按钮"/>
+		<script>
+			/*
+			 	逻辑运算符
+			 		或与非
+			 		
+			 		！非，取反
+			 		
+			 		||或
+			 		如果前边为真，返回前边，如果前边为假，返回后边
+			 		&&与
+			 		如果前边为真，返回后边，如果前边为假，返回前边
+			 		
+			 		
+			 * */
+			var a=10,b=2;
+			console.log(a>3||b>6)
+			var inps = document.getElementsByTagName('input');
+			inps[1].onclick = function(){
+				//var val = inps[0].value || '默认值';
+			inps[0].value && alert(inps[0].value)
+				
+			}
+			if(a>0){
+				alert(1)
+			}
+			if(a<10){
+				alert(1)
+			}
+			if(a<10||a>0){
+				alert(1)
+			}
+//			if(a>0){
+//				if(a<10){
+//					alert(1)
+//				}
+//			}
+//			if(a>0&&a<10){
+//				alert(1)
+//			}
+			//console.log(0<a<3)//注意不要这么写
+		</script>
+	</body>
+</html>

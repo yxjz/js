@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box1,#box2{
+				width: 100px;
+				height: 100px;
+				padding:100px;
+				border: 1px solid #000;
+				float: left;
+			}
+			#div1,#div2{
+				width: 100px;
+				height: 100px;
+			}
+			#div1{
+				background: red;
+			}
+			#div2{
+				background: blue;
+				/*transform: scaleX(2);*/
+				/*transform: scaleY(2);*/
+				/*transform: translateX(50px);*/
+				/*transform: scale(2) translate(50px,50px);*/
+				/*transform:translate(50px,50px) scale(2);*/
+				/*transform:skewX(30deg);*/
+				transform: rotate(30deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<div id="div1"></div>
+		</div>
+		<div id="box2">
+			<div id="div2"></div>
+		</div>
+		<script>
+			/*
+			 * transform用style获取是字符串，必须是在行间设置的，不能是css样式里设置
+			 * getComputedStyle获取到的是矩阵
+			 * 初始值：
+			 	matrix(1, 0, 0, 1, 0, 0)
+			 	matrix(a, b, c, d, e, f)
+			 	
+			 	scaleX ,系数x
+			 		a = a*x;
+			 		c = c*x;
+			 		e = e*x;
+			 	scaleY ,系数y
+			 		b = b*y;
+			 		d = d*y;
+			 		f = f*y;
+			 		
+			 	translateX
+			 		e = e+x
+			 	translateY
+			 		f = f+y	
+			 		
+			 	角度转弧度	deg*Math.PI/180
+			 	skewX
+			 		c = Math.tan(deg*Math.PI/180)
+			 	skewY
+			 		b = Math.tan(deg*Math.PI/180)
+			 		
+			 	rotate
+			 		a = Math.cos(deg*Math.PI/180)
+			 		b = Math.sin(deg*Math.PI/180)
+			 		c = -Math.sin(deg*Math.PI/180)
+			 		d = Math.cos(deg*Math.PI/180)
+			 * */
+			var div1 = document.getElementById('div1');
+//			console.log(div.style.transform);
+//			console.log(getComputedStyle(div).transform)
+			var a = Math.cos(30*Math.PI/180),
+			    b = Math.sin(30*Math.PI/180),
+			    c = -Math.sin(30*Math.PI/180),
+			    d = Math.cos(30*Math.PI/180),
+			    e = 0,
+			    f = 0;
+			    /*
+			     * 位移
+			     	matrix(1, 0, 0, 1, 50, 50)
+			     	缩放
+			     *  matrix(2, 0, 0, 2, 100, 100)
+			     * 
+			     * 缩放
+			     	matrix(2, 0, 0, 2, 0, 0)
+			     	位移
+			     *  matrix(2, 0, 0, 2, 50, 50)
+			     * */
+			    div1.style.transform = 'matrix('+a+', '+b+', '+c+','+d+','+ e+','+ f+')';
+		</script>
+	</body>
+</html>

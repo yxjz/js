@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var str = '   shif   sjigjho     ';
+			function fn(str){
+				var n = 0;
+				var m = 0;
+				for(var i=0;i<str.length;i++){
+					if(str[i] != ' '){
+						n = i;
+						break;
+					}
+				}
+				for(var i=str.length-1;i>=0;i--){
+					if(str[i] != ' '){
+						m = i;
+						break;
+					}
+				}
+				return str.substring(n,m+1);
+			}
+			console.log(str);
+			console.log(fn(str));
+		</script>
+	</body>
+</html>

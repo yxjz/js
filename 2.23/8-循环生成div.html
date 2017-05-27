@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			   chrome
+			   	 100    20ms
+			   	 1000   1360.647ms
+			   	 
+			   	 str1000 4.701ms
+			 * 
+			 * */
+			var str = '';
+			console.time('计时器')
+			for(var i=0;i<1000;i++){
+				str += '<div>'+i+'</div>';
+			}
+			document.body.innerHTML = str;
+			console.timeEnd('计时器')
+		</script>
+	</body>
+</html>

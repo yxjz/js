@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function A(){
+				alert(a);
+				var a=10;
+				alert(this.a);
+			}
+			A();
+			
+			/*
+			 	a = undefined
+			 	fn = function
+			 * */
+//			var a = 100;
+//			/*
+//			 	a = 100
+//			 	fn = function
+//			 * */
+//			function fn(){ 
+//				/*
+//				 	a,b,c = undefined
+//				 * 
+//				 * */
+//				var b = 2 * a; 
+//				/*
+//				 	b = 2*undefined = NaN
+//				 * */
+//				var a = 200; 
+//				/*
+//				 	a = 200
+//				 * */
+//				var c = a / 2;  
+//				/*
+//				 	c = 200/2 = 100
+//				 * */
+//				alert(b);//NaN    
+//				alert(c);//100    
+//			}    
+//			fn()
+
+			/*
+			 	a = function
+			 * */
+//			function a(b){
+//				/*
+//				 	b = function
+//				 * */
+//				alert(b);
+//				function b(){
+//					alert(b);
+//				}
+//				b();
+//			}
+//			a(1);
+
+//			function a(b){
+//				
+//				alert(b);
+//				b=function (){
+//					alert(b);
+//				}
+//				b();
+//			}
+//			a(1);
+
+
+//			var a=3;
+//			 function c(){
+//			    alert(a);
+//			 }
+//			 function fn(){
+//			  var a=4;
+//			  c();
+//			 }
+//			 fn();
+
+//			var a=3;
+//			 function c(a){
+//			    alert(a);
+//			 }
+//			 function fn(){
+//			  var a=4;
+//			  c(a);
+//			 };
+//			 fn();
+			
+			
+//			alert(a)
+//			alert(b)
+//			var b = function(){alert(a)};
+//			alert(b)
+//			var a = 1;
+//			b();
+//			alert(a);
+//			var a = 12;
+//			alert(a);
+//			function a(){alert(1)};
+//			a();
+//			alert(a);
+
+			
+//	function a(){
+//		return function(){
+//			alert(1);
+//		}
+//	}
+//	alert(a);
+//	a();
+//	function b(a,b){
+//		a = 20;
+//		return function(){
+//			b = 10;
+//			a = 20;
+//			alert(a+b);
+//		}
+//	}
+//	alert(b);
+//	alert(b());
+//	b()();
+//	b(9,11)();
+//	alert(a);
+			
+			
+//			alert(a) ;
+//			var a = function(){alert(1)};
+//			a();
+//			alert(a) 
+//			function a(a,b){
+//				alert(1);
+//				a = 10;
+//				return function(b){
+//					a = 1
+//					alert(a);
+//				}
+//			}
+//			alert(a());
+
+//			var a = 10;	
+//			function fn(){
+//				var a = b = 20;
+//				alert(this.a)
+//				alert(this.b)
+//			}
+//			fn();
+
+
+
+//			var name = 'peter';
+//			function fn(){
+//				var name;
+//				if(name == undefined){
+//					console.log('你好'+name)
+//				}else{
+//					name = 'jack';
+//					console.log('你好'+name)
+//				}
+//			}
+//			fn();
+				
+				
+			//随机生成0-100之间的整数	
+			console.log(Math.round(Math.random()*100))
+		</script>
+	</body>
+</html>

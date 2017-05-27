@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	事件对象
+			 		用来记录事件触发时的相关详细信息
+			 		事件处理函数的第一个形参就是事件对象
+			 		不同的事件的事件对象存的内容也不同
+			 		比如鼠标的事件对象有坐标信息
+			 		键盘的事件对象有键值信息
+			 		
+			 * */
+			function fn(ev){
+				//兼容标准浏览器和ie
+				ev = ev || event;
+				console.log(ev)
+			}
+			document.addEventListener('click',fn)
+			document.addEventListener('click',function(ev){
+				
+			})
+//			document.onclick = function(ev){
+//				
+//			}
+		</script>
+	</body>
+</html>

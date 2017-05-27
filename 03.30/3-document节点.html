@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	document文档节点
+			 * 		nodeType   9
+			 *      nodeName   #document
+			 *      nodeValue  null
+			 * 
+			 * 
+			 * 		document.documentElement - html标签
+			 * document.body - body标签
+			 * document.head - head标签
+			 * */
+			console.log(document.nodeType);//9
+			console.log(document.nodeName);//#document
+			console.log(document.nodeValue);//null
+			document.getElementsByTagName('html')[0];
+			document.body.innerHTML = 1;
+			console.dir(document);
+			console.log(document.nodeValue);
+			console.log(document.nodeName)
+		</script>
+	</body>
+</html>

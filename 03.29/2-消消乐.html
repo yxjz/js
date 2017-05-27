@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 545px;
+				height: 545px;
+				margin:20px auto;
+				position: relative;
+				/*background: #000;*/
+			}
+			#box div{
+				position: absolute;
+				width: 48px;
+				height: 48px;
+				border: 5px solid transparent;
+				color: #fff;
+				text-align: center;
+				line-height: 50px;
+				border-radius: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			/*
+				1.找，附近颜色相同的
+					知道点的是第几个，好向附近去找，点的是什么颜色
+				2.找到的加黑框
+			* */
+			var box = document.getElementById('box');
+			var str = '';
+			for(var i=0;i<100;i++){
+				str += `<div style="left:${i%10*60}px;top:${Math.floor(i/10)*60}px;background:${color()};">${i+1}</div>`;
+			}
+			box.innerHTML = str;
+			var divs = box.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				divs[i].index = i;
+				divs[i].color = divs[i].style.backgroundColor;
+				divs[i].onclick = function(){
+					//console.log(findEle(this.index))
+					show(findEle(this.index));
+				}
+			}
+			function color(n){
+				var arr = ['red','yellow','blue','green','orange','purple'];
+				return n?arr[0]:arr[Math.round(Math.random()*(arr.length-1))]
+			}
+			function findEle(index){
+				var arr = [];
+				fn(index);
+				function fn(n){
+					if(arr.includes(divs[n])){
+						return;
+					}else{
+						arr.push(divs[n]);
+					}
+					if(divs[n-1]&&Math.floor((n-1)/10)==Math.floor((n)/10)&&divs[n-1].color == divs[n].color){
+						fn(n-1);
+					}
+					if(divs[n+1]&&Math.floor((n+1)/10)==Math.floor((n)/10)&&divs[n+1].color == divs[n].color){
+						fn(n+1);
+					}
+					if(divs[n-10]&&divs[n-10].color == divs[n].color){
+						fn(n-10);
+					}
+					if(divs[n+10]&&divs[n+10].color == divs[n].color){
+						fn(n+10);
+					}
+				}
+                console.log(arr);
+				return arr;
+
+			}
+			function show(arr){
+				for(var i=0;i<divs.length;i++){
+					divs[i].style.borderColor = '';
+				}
+				for(var i=0;i<arr.length;i++){
+					arr[i].style.borderColor = '#000';
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="div"></div>
+		<div id="d" class="abc"></div>
+		<script>
+			function fn(name){
+				return document.getElementById(name);
+			}
+			function fn2(name){
+				return document.getElementsByClassName(name);
+			}
+			var div = fn('box');
+			var div2 = fn2('abc');
+			console.log(div2[0])
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				margin-right:5px;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script>
+			//for直接套for变量别用同一个
+//			for(var i=0;i<10;i++){
+//				console.log('分隔符');
+//				for(var j=0;j<10;j++){
+//					console.log(j)
+//				}
+//			}
+			var divs = document.getElementsByTagName('div');
+			//被function分隔开的for套for，可以都用i
+			for(var i=0;i<10;i++){
+				divs[i].onclick = function(){
+					for(var i=0;i<10;i++){
+						alert(1);
+					}
+					//alert(i);   直接弹出10
+				}
+			}
+		</script>
+	</body>
+</html>

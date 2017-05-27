@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#btn{
+				width:100px;
+				height:100px;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				document.getElementById('btn').onclick = function(){
+				alert(1)	
+				}
+				console.log(1)
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!--
+			内联js		
+				优点：同一页面方便复用，修改，扩展
+				
+				推荐放在body的结束标签上方
+				如果放在head里，加window.onload = function(){
+					js代码写这里
+				}
+				
+				window.onload
+					文件加载完执行
+					
+				console.log()	
+					打印
+			
+		-->
+		<input type="button" value="按钮" id="btn"/>
+		<!--<script>
+			document.getElementById('btn').onclick = function(){
+			alert(1)	
+			}
+		</script>-->
+	</body>
+</html>

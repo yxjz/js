@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			<li class="a"></li>
+			<li class="a b"></li>
+			<li class="a b c"></li>
+		</ul>
+		<script>
+			var lis = document.getElementsByTagName('li');
+			console.log(lis[2].classList)
+			lis[2].classList.add('a');
+			lis[2].classList.remove('d');
+		</script>
+	</body>
+</html>

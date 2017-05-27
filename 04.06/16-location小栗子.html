@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ol{
+				margin:0;
+				padding:0;
+				list-style: none;
+			}
+			ol li{
+				float: left;
+				width: 50px;
+				height: 50px;
+				border: 1px solid #000;
+				margin-right:10px;
+				line-height: 50px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="16-location小栗子.html?t=lm">联盟</a>
+		<a href="16-location小栗子.html?t=bl">部落</a>
+		<ul id="list"></ul>
+		<ol id="pages">
+		</ol>
+		<script>
+			var data = {
+				lm:[
+					{
+						name:'暴风城1'
+					},
+					{
+						name:'铁炉堡1'
+					},
+					{
+						name:'圣骑士1'
+					},
+					{
+						name:'暗夜精灵1'
+					},
+					{
+						name:'暴风城1'
+					},
+					{
+						name:'铁炉堡2'
+					},
+					{
+						name:'圣骑士2'
+					},
+					{
+						name:'暗夜精灵2'
+					},
+					{
+						name:'暴风城2'
+					},
+					{
+						name:'铁炉堡2'
+					},
+					{
+						name:'圣骑士3'
+					},
+					{
+						name:'暗夜精灵3'
+					}
+				],
+				bl:[
+					{
+						name:'奥格瑞玛1'
+					},
+					{
+						name:'雷霆崖1'
+					},
+					{
+						name:'洛丹伦1'
+					},
+					{
+						name:'幽暗城1'
+					},
+					{
+						name:'萨满1'
+					},
+					{
+						name:'奥格瑞玛2'
+					},
+					{
+						name:'雷霆崖2'
+					},
+					{
+						name:'洛丹伦2'
+					},
+					{
+						name:'幽暗城2'
+					},
+					{
+						name:'萨满2'
+					},
+					{
+						name:'奥格瑞玛3'
+					},
+					{
+						name:'雷霆崖3'
+					},
+					{
+						name:'洛丹伦3'
+					},
+					{
+						name:'幽暗城3'
+					},
+					{
+						name:'萨满3'
+					},
+					{
+						name:'奥格瑞玛4'
+					},
+					{
+						name:'雷霆崖4'
+					},
+					{
+						name:'洛丹伦4'
+					},
+					{
+						name:'幽暗城4'
+					},
+					{
+						name:'萨满4'
+					}
+				]
+			};
+			/*
+			 	1.获取数据
+			 * 		第一次打开页面，没有search，设置默认lm
+			 * 
+			 *  2.渲染页面
+			 * 
+			 *  3.分页效果
+			 * 		
+			 * */
+			var list = document.getElementById('list');
+			var pages = document.getElementById('pages');
+			var ps = pages.getElementsByTagName('li');
+			//一页几条数据
+			var len = 5;
+			//有几页，需要计算
+			var page = 0;
+			var Data = [];
+			var search = location.search;
+			var hash = location.hash;
+
+			//第一次打开页面没有search，设置默认为lm
+			if(search){
+				var t = search.substring(1).split('=')[1];	
+			}else{
+				var t = 'lm';
+			}
+			console.log(t);
+			if(hash){
+				var h = hash.substring(1).split('=')[1];
+			}else{
+				var h = 1;
+			}
+			//根据search找到的值，拿到对应的数据
+			Data = data[t];
+			//console.log(Data)
+			var start = (h-1)*len;
+			var end = start+len;
+			var str = '';
+			for(var i=start;i<end;i++){	
+				str += '<li>'+Data[i].name+'</li>';
+			}
+			list.innerHTML = str;
+			
+			//计算生成几页
+			page =  Math.ceil(Data.length/len);
+			//console.log(page)
+			str = '';
+			for(var i=0;i<page;i++){
+				str += '<li>'+(i+1)+'</li>';
+			}
+			pages.innerHTML = str;
+			for(var i=0;i<ps.length;i++){
+				ps[i].onclick = function(){
+					location.hash = 'p='+this.innerHTML;
+                    console.log(location.hash)
+				}
+			}
+			window.onhashchange = function(){
+				h = location.hash.substring(1).split('=')[1];
+				var start = (h-1)*len;
+				var end = start+len;
+				if(end>Data.length-1){
+					end = Data.length;
+				}
+				var str = ''; 
+				list.innerHTML = '';
+				for(var i=start;i<end;i++){	
+					str += '<li>'+Data[i].name+'</li>';
+				}
+				list.innerHTML = str;
+				//len = 5
+		
+			}
+			
+		</script>
+	</body>
+</html>

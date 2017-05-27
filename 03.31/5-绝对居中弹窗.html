@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 200px;
+				height: 200px;
+				border: 10px solid #000;
+				position: absolute;
+				display: none;
+			}
+			span{
+				position: absolute;
+				right:10px;
+				top:10px;
+				font-size:50px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="div1">
+			<span id="x">X</span>
+		</div>
+		<script>
+			var btn = document.getElementById('btn');
+			var div1 = document.getElementById('div1');
+			var span = document.getElementById('x');
+			btn.onclick = function(){
+				var w = document.documentElement.clientWidth;
+				var h = document.documentElement.clientHeight;
+				div1.style.display = 'block';
+				div1.style.left = w/2-110+'px';
+				div1.style.top = h/2-110+'px';
+			}
+			span.onclick = function(){
+				div1.style.cssText = '';
+			}
+		</script>
+	</body>
+</html>

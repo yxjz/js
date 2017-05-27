@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: red;
+				font-size:30px;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			(function(){
+				var w = screen.width;
+				var targetW = 320;
+				var scale = w/targetW;
+				var meta = document.createElement('meta');
+				meta.name = 'viewport';
+				meta.content = 'user-scalable=no,width=device-width,initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale;
+				document.head.appendChild(meta);
+//			document.body.innerHTML = innerWidth
+				var box = document.getElementById('box')
+				/*
+				 	touchstart
+				 	touchmove
+				 	touchend
+				 * 
+				 * */
+				
+				box.addEventListener('touchstart',function(){
+					this.innerHTML = 'touchstart';
+				})
+				box.addEventListener('touchmove',function(){
+					this.innerHTML = 'touchmove';
+				})
+				box.addEventListener('touchend',function(){
+					this.innerHTML = 'touchend';
+				})
+
+			})()
+			
+		</script>
+	</body>
+</html>

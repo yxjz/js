@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var str = 'miabcovsygab2895gjskgabc';
+			function fn(str,target){
+				//var n = 0;
+				/*for(var i=0;str.indexOf(target,i) != -1;i=str.indexOf(target,i)+target.length){
+					n++;
+				}*/
+				var n = str.split(target).length-1;
+				return n;
+			}
+			console.log(fn(str,'abc'));
+		</script>
+	</body>
+</html>

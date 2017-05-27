@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				padding:100px;
+				border: 10px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+			/*
+			 		offsetWidth/offsetHeight
+			 			获取的是元素实际大小，不带单位
+			 			
+			 		padding+自身宽/高+边框，包括边框	
+			 * 
+			 * */
+			var div1 = document.getElementById('div1');
+			console.log(div1.offsetWidth)
+		</script>
+	</body>
+</html>

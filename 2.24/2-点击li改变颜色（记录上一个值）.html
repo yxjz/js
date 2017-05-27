@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				margin:5px;
+			}
+			.active{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>文字1</li>
+			<li>文字2</li>
+			<li>文字3</li>
+			<li>文字4</li>
+			<li>文字5</li>
+			<li>文字6</li>
+		</ul>
+		<script>
+			var lis = document.getElementsByTagName('li');
+			//用变量存一下上一次点击的li
+			//null空对象，暂时不知道存的数据类型或者暂时没有值存，可以先定义为null
+			var prev = null;
+			//var prev = lis[0];
+			for(var i=0;i<lis.length;i++){
+				lis[i].onclick = function(){
+					//记录上一个值
+					//lis[0]
+					//清除上一次点击的li的class
+//					prev.className = '';
+					//当前点击的li加class
+//					this.className = 'active';
+					//记录这次点击的li，就是下一次点击时的上一次的li
+//					prev = this;
+//					console.log(this.innerHTML)
+
+					//null
+					//null转成布尔值是false，所以第一次点击prev是null,就不执行清class,第二次点击的时候prev记录了上一次点击的li，元素对象转布尔值是true，就执行清prev的class
+					if(prev){
+						prev.className = '';
+					}
+					this.className = 'active';
+					prev = this;
+					
+				}
+			}
+		</script>
+	</body>
+</html>

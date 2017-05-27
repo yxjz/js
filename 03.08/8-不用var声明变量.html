@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	不用var声明变量，第一次给一个没声明的变量赋值，系统会自动声明这个变量，但是是全局变量,但是不要这么做！会造成全局污染
+			 * 
+			 * */
+			a = 1;
+			
+			function fn(){
+				b = 2;
+	
+				console.log(a)
+			}
+			fn();
+			console.log(b)
+			
+		</script>
+	</body>
+</html>

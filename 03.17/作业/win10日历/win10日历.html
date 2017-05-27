@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 260px;
+			    margin: 0 auto;
+			    background: #6277ce;
+			    padding: 10px;
+			    overflow: hidden;
+			}
+			#box h3{
+				padding: 5px;
+				font-size: 40px;
+				color: #fff;
+			}
+			#box h4{
+				padding: 5px;
+				color: #c7f97e;
+				font-size: 22px;
+			}
+			.sel{
+				padding: 5px;
+				color: #fff;
+			}
+			.sel select{
+				margin-right:10px ;
+			}
+			
+			.sel select:nth-of-type(2){
+				margin-left: 20px;
+			}
+			
+			
+			#date{
+				width: 210px;
+			}
+			#date li{
+				width: 30px;
+				height: 30px;
+				float: left;
+				color: #a2cbf3;
+				text-align: center;
+				line-height: 30px;
+				list-style: none;
+			}
+			#date span{
+				float: left;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				color: #fff;
+			}
+			#date span.active{
+				background: #ce709d;
+				color: #fff;
+				font-weight: bold;
+				border-radius: 50%;
+			}
+		</style>	
+	</head>
+	<body>
+		<div id="box">
+			<h3></h3>
+			<h4></h4>
+			<div class="sel">
+				<select></select>年
+				<select></select>月
+			</div>
+			<div id="date">
+				<ul>
+					<li>日</li>
+					<li>一</li>
+					<li>二</li>
+					<li>三</li>
+					<li>四</li>
+					<li>五</li>
+					<li>六</li>
+				</ul>
+				<div></div>
+			</div>
+		</div>
+		<script>
+			var h3 = document.getElementsByTagName('h3')[0];
+			var h4 = document.getElementsByTagName('h4')[0];
+			var div = document.getElementById('date').getElementsByTagName('div')[0];
+			var selects = document.getElementsByTagName('select');
+			var year = selects[0].getElementsByTagName('option');
+			var month = selects[1].getElementsByTagName('option');
+			var str1 = '';
+			var str2 = '';
+			var str3 = '';
+			var n = 0;
+			for(var i=0;i<100;i++){
+				str1 += '<option>'+(2050-i)+'</option>';
+			}
+			selects[0].innerHTML = str1;
+			for(var i=1;i<13;i++){
+				str2 += '<option>'+i+'</option>';
+			}
+			selects[1].innerHTML = str2;
+			show();
+			function show() {
+				var date = new Date();
+				date.setDate(1);
+				date.setMonth(date.getMonth()+n);
+				var n1 = date.getDay();//这个月的第一天是星期几
+				//console.log(n1);
+
+				var date = new Date();
+				date.setDate(1);
+				date.setMonth(date.getMonth()+1+n);
+				date.setDate(0);
+				var n2 = date.getDate();//这个月有多少天
+				//console.log(n2);
+
+				var date = new Date();
+				var n3 = date.getDate();
+				//console.log(n3);//今天几号
+
+
+				for(var i=0;i<n1;i++){
+					str3 += '<span></span>';
+				}
+				for(var i=0;i<n2;i++){
+					str3 += '<span>'+(i+1)+'</span>';
+				}
+				div.innerHTML = str3;
+				var spans = div.getElementsByTagName('span');
+				for(var i=0;i<spans.length;i++){
+					if(n<0){
+						//本月之前都是灰
+						spans[i].className = 'gray';
+					}else if(n==0){//本月
+						//今天之前
+						//n3-1+n1
+						if(i < n3+n1-1){
+							//
+							spans[i].className += ' gray';
+						}else if(i == n3+n1-1){//今天
+							spans[i].className += ' active';
+						}else{//今天之后
+							if(i%7==5||i%7==6){
+								spans[i].className = 'red';
+							}
+						}
+					}else{
+						if(i%7==5||i%7==6){
+							spans[i].className = 'red';
+						}
+					}
+					spans[i].onclick = function () {
+						for(var i=0;i<spans.length;i++){
+							spans[i].className = '';
+						}
+						this.className = 'active';
+					}
+				}
+			}
+
+			var date = new Date();
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+
+			//初始化：
+			selects[0].value = date.getFullYear();
+			selects[1].value = date.getMonth()+1;
+			h3.innerHTML = date.getFullYear()+'年';
+			h4.innerHTML = date.getMonth()+1+'月';
+
+			selects[0].onchange = function () {
+				str3 = '';
+				for(var i=0;i<month.length;i++){
+					if(month[i].selected){
+						var valMonth = month[i].value;
+					}
+				}
+				var val = this.value;
+				selects[0].value = val;
+				n = (val - y)*12 + (valMonth - m);
+				console.log(n)
+				show();
+			}
+
+
+			selects[1].onchange = function () {
+				str3 = '';
+				for(var i=0;i<year.length;i++){
+					if(year[i].selected){
+						var valYear = year[i].value;
+					}
+				}
+				var val = this.value;
+				selects[1].value = val;
+				n = (val - m) + (valYear - y)*12;
+				console.log(n);
+				show();
+			}
+		</script>
+	</body>
+</html>

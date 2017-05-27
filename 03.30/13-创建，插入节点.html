@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<script>
+			/*
+			 	节点操作
+			 		创建节点,只能是document
+					document.createElement('标签名')
+					document.createTextNode('文字')
+			 		插入节点
+			 			向父节点的最后一位插入子节点
+			 			parentNode.appendChild(要插入的子节点)
+			 			向父节点的要插入的节点前插入节点
+			 			parentNode.insertBefore(新元素节点,要插入的节点)
+			 			注意：
+			 			1.要插入的节点写null，跟appendChild效果一样
+			 			2.如果插入的节点为已有节点，相当于剪切
+			 			3.insertBefore的第二个参数，一定要是父节点下的子节点，不然报错
+			 			
+			 * 
+			 * */
+//			var div = document.createElement('div');
+//			div.id = 'div';
+//			div.className = 'a';
+//			div.innerHTML = '你好';
+//			div.setAttribute('aaa',123);
+//			div.onclick = function(){
+//				alert(1)
+//			}
+
+
+//for(var i=0;i<10;i++){
+//	document.body.appendChild(document.createElement('div'))
+//}
+
+		var ul = document.getElementsByTagName('ul')[0];
+		var lis = ul.getElementsByTagName('li');
+		var li = document.createElement('li');
+		var txt = document.createTextNode('文字')
+		li.style.background = 'red';
+		//ul.insertBefore(li,null)
+			
+		ul.insertBefore(lis[1],lis[0])
+	
+		lis[0].onclick = function(){
+			alert(1)
+		}
+	
+//		ul.appendChild(lis[0])
+//		console.log(lis)
+////		lis[5].onclick()
+//		//lis[5].appendChild(txt)
+//		lis[5].insertBefore(txt,lis[5].childNodes[0])
+		</script>
+	</body>
+</html>

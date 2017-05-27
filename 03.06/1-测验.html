@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮1" />
+		<input type="button" value="按钮2" />
+		<input type="button" value="按钮3" />
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<!--
+			btns   divs
+			.active 按钮红色 .show  div显示
+			for(var i=0;i<btns.length;i++){
+				btns[i].index = i;
+				btns[i].onclick = function(){
+					for(var i=0;i<btns.length;i++){
+						btns[i].className = '';
+						divs[i].className = '';
+					}
+					this.className = 'active';
+					divs[this.index].className = 'show';
+				}
+			}
+			
+			
+		-->
+		
+		
+		<img src="" alt="" />
+		<a href="javascript:;" id="prev"></a>
+		<a href="javascript:;" id="next"></a>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<!--
+			img   prev   next   lis
+			arr = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg']
+			.active控制li红点
+			var n=0;
+			function tab(){
+				if(n>arr.length-1){
+					n = 0;
+				}
+				if(n<0){
+					n = arr.length-1;
+				}
+				img.src = arr[n];
+				for(var i=0;i<lis.length;i++){
+					lis[i].className = '';
+				}
+				lis[n].className = 'active';
+			}
+			prev.onclick = function(){
+				n--;
+				tab();
+			}
+			next.onclick = function(){
+				n++;
+				tab();	
+			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].index = i;
+				lis[i].onclick =  function(){
+					n = this.index;
+					tab();
+				}
+			}
+			
+		-->
+	</body>
+</html>

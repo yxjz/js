@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin:0;
+			}
+			section{
+				width:100%;
+				height:150px;
+				position: relative;
+			}
+			ul{
+				position: absolute;
+				left:0;
+				top:0;
+				height:100%;
+				margin:0;
+				padding:0;
+				list-style: none;
+			}
+			li{
+				float: left;
+				height:100%;
+			}
+			img{
+				width:100%;
+				height:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<ul>
+				<li><img src="img/img.jpg" alt="" /></li>
+				<li><img src="img/img2.jpg" alt="" /></li>
+				<li><img src="img/img3.jpg" alt="" /></li>
+				<li><img src="img/img4.jpg" alt="" /></li>
+			</ul>
+		</section>
+		<script>
+			(function(){
+				var w = screen.width;
+				var targetW = 320;
+				var scale = w/targetW;
+				var meta = document.createElement('meta');
+				meta.name = 'viewport';
+				meta.content = 'user-scalable=no,width=device-width,initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale;
+				document.head.appendChild(meta);
+				document.addEventListener('touchstart',function(ev){
+					ev.preventDefault();
+				})
+				
+				var wrap = document.getElementsByTagName('section')[0];
+				var ul = wrap.getElementsByTagName('ul')[0];
+				var lis = ul.getElementsByTagName('li');
+				var pressX = 0;
+				var ulLeft = 0;
+				ul.innerHTML+=ul.innerHTML;
+				ul.style.width = lis.length*w+'px';
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.width = w+'px';
+				}
+				wrap.addEventListener('touchstart',function(ev){
+					var ev = ev.changedTouches[0];
+					pressX = ev.pageX;
+					var num = Math.round(ul.offsetLeft/w);
+					ul.style.transition = '';
+					if(num==0){
+						num = lis.length/2;
+						ul.style.left = -num*w+'px';
+					}
+					if(-num==lis.length-1){
+						num = lis.length/2-1;
+						ul.style.left = -num*w+'px';
+					}
+					ulLeft = ul.offsetLeft;
+				})
+				wrap.addEventListener('touchmove',function(ev){
+					var ev = ev.changedTouches[0];
+					var x = ev.pageX-pressX;
+					ul.style.left = x+ulLeft+'px';
+				})
+				wrap.addEventListener('touchend',function(){
+					var num = Math.round(ul.offsetLeft/w);
+					ul.style.transition = '.5s';
+					ul.style.left = num*w+'px';
+				})
+				
+			})()
+			
+		</script>
+	</body>
+</html>

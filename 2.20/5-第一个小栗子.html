@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				transition: 3s;
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<input type="button" value="按钮" id="btn"/>
+		<div id="div"></div>
+		<script>
+			/*
+			 	多行注释
+			 * */
+			//单行注释
+			
+			
+			/*
+			 	步骤：
+			 		1.按钮点击
+			 		2.改变div宽高
+			 		
+			 		元素.onclick = function(){
+			 			元素.style.样式名 = '值'
+			 		注意：值必须加引号，单双引号都可以，必须成对出现
+			 		}
+			 		
+			 * 
+			 * */
+			document.getElementById('btn').onclick = function(){
+				document.getElementById('div').style.width = '200px';
+				document.getElementById('div').style.height = '200px';
+			}
+		</script>
+	</body>
+</html>

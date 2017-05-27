@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				padding:100px;
+				border: 10px solid #000;
+				overflow: hidden;
+			}
+			#div2{
+				width: 500px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2"></div>
+		</div>
+		<script>
+			/*
+			 		scrollWidth/scrollHeight
+			 			获取的是元素内容实际大小，不带单位
+			 		如果内容不超出父级，clientWidth相同
+			 		如果内容超出父级，内容的大小
+			 		
+			 * 
+			 * */
+			var div1 = document.getElementById('div1');
+			var div2 = document.getElementById('div2');
+			console.log(div1.scrollWidth)
+		</script>
+	</body>
+</html>

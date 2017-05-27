@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top:0;
+				left:0;
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<a href="http://www.baidu.com">百度</a>
+		<!--<div id="box"></div>-->
+		<script>
+			(function(){
+				var w = screen.width;
+				var targetW = 320;
+				var scale = w/targetW;
+				var meta = document.createElement('meta');
+				meta.name = 'viewport';
+				meta.content = 'user-scalable=no,width=device-width,initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale;
+				document.head.appendChild(meta);
+
+			/*
+			 	事件点透
+			 		点上层元素，上层元素消失或隐藏，下层元素有焦点特性或者click,300ms后触发下层元素的事件
+			 		解决方法：
+			 		1.如果上层要消失的话，下层不放焦点特性标签
+			 		2.不用pc事件
+			 		3.阻止默认行为
+			 * 			a.阻止长按文字或图片的系统默认弹窗
+			 * 			b.点透
+			 *          c.阻止缩放
+			 * 			d.阻止下拉回弹
+			 * 			e.阻止了焦点行为，焦点标签上阻止冒泡
+			 * */
+				var a = document.getElementsByTagName('a')[0];
+				a.addEventListener('touchstart',function(ev){
+					ev.stopPropagation();
+				})
+				document.addEventListener('touchstart',function(ev){
+					ev.preventDefault();
+				})
+				
+			})()
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+		<select name="" id="sel">
+			<option value="1">回车</option>
+			<option value="2">Ctrl+回车</option>
+		</select>
+		<ul id="list">
+			
+		</ul>
+		<script>
+			var list = document.getElementById('list');
+			var txt = document.getElementById('txt');
+			var sel = document.getElementById('sel');
+			var onOff = true;
+			sel.onchange = function(){
+				if(this.value==1){
+					onOff = true;
+				}else{
+					onOff = false;
+				}
+			}
+			txt.onkeyup = function(ev){
+				if(onOff){
+					if(!ev.ctrlKey&&ev.keyCode==13){
+						var val = this.value;
+						list.innerHTML += '<li>'+val+'</li>';
+					}
+				}else{
+					if(ev.ctrlKey&&ev.keyCode==13){
+						var val = this.value;
+						list.innerHTML += '<li>'+val+'</li>';
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

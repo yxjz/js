@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			input::selection{
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="txt" value="这是内容"/>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			/*
+			 	select()-文本框选中所有文本同时聚焦
+			 	setSelectionRange(开始位置,结束位置)，substring差不多
+			 	选中后的聚焦才能看得到focus()
+			 * 
+			 * 
+			 * 文本框元素.selectionStart - 选中起始位置
+			 * 文本框元素.selectionEnd - 选中结束位置
+			 * */
+			var txt = document.getElementById('txt');
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				txt.select();
+//				txt.setSelectionRange(1,2);
+//				txt.focus();
+//				console.log(txt.value.substring(txt.selectionStart,txt.selectionEnd))
+			}
+		</script>
+	</body>
+</html>

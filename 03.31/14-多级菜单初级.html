@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				list-style: none;
+			}
+			#list ul{
+				/*display: none;*/
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<!--<li>
+				<h2>第一级</h2>
+				<ul>1</ul>
+			</li>
+			<li>
+				<h2>第一级</h2>
+			</li>
+			<li>
+				<h2>第一级</h2>
+				<ul>1</ul>
+			</li>-->
+		</ul>
+		<script>
+			/*
+			 	先写只有一级数据，child里有1代表有子数据
+			 * */
+			var data2 = [
+				{
+					name:'第一级',
+					child:[1]
+				},
+				{
+					name:'第一级',
+					child:[]
+				},
+				{
+					name:'第一级',
+					child:[1]
+				}
+			];
+			var list = document.getElementById('list');
+			
+			function show(arr){
+				var str = '';
+				fn(arr);
+				function fn(arr){
+					arr.forEach(function(a){
+						//有子数据，就写个<ul>1</ul>，多级数据就是把里边的1替换成结构，用递归，把子数据传入fn(a.child)
+						if(a.child.length==0){
+							//没有子集
+							str += '<li><h2>'+a.name+'</h2></li>';
+						}else{
+							//有子集
+							str += '<li><h2>'+a.name+'</h2><ul>1</ul></li>';
+						}
+					})
+				}
+				return str;
+			}
+			list.innerHTML = show(data2);
+		</script>
+	</body>
+</html>

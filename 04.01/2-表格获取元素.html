@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table{
+				border-collapse: collapse;
+			}
+			td{
+				padding:0;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1" id="table">
+			<thead>
+				<tr>
+					<th>星期一</th>
+					<th>星期二</th>
+					<th>星期三</th>
+					<th>星期四</th>
+					<th>星期五</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>css1</td>
+					<td>css2</td>
+					<td>css3</td>
+					<td>css4</td>
+					<td>css5</td>
+				</tr>
+				<tr>
+					<td>html</td>
+					<td>html</td>
+					<td>html</td>
+					<td>html</td>
+					<td>html</td>
+				</tr>
+				<tr>
+					<td>js</td>
+					<td>js</td>
+					<td>js</td>
+					<td>js</td>
+					<td>js</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="5">自习</td>
+				</tr>
+			</tfoot>
+		</table>
+		<script>
+			/*
+			 	table元素节点下的属性
+			 		tHead - 表头
+			 		tBodies - 表身，集合，下标取值[]
+			 		tFoot - 表尾
+			 		rows - 行
+			 		cells - 列
+			 * */
+			var table = document.getElementById('table');
+			//console.log(table.tHead)
+			//console.log(table.tBodies[0])
+			//console.log(table.tFoot)
+			console.log(table.tBodies[0].rows[0].cells[0])
+		</script>
+	</body>
+</html>
